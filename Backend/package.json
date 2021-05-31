@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/jessemelara/Maquetacion_Frameworks_JS/issues"
   },
-  "homepage": "https://github.com/jessemelara/Maquetacion_Frameworks_JS#readme"
+  "homepage": "https://github.com/jessemelara/Maquetacion_Frameworks_JS#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
 }
