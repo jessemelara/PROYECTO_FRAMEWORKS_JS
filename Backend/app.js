@@ -1,8 +1,8 @@
 'use strict'
 
 //Cargar modulos de node para crear servidor
-import express from 'express';
-import { urlencoded, json } from 'body-parser';
+var express = require('express');
+var bodyParser = require('body-parser');
 
 //Ejecutar express (http)
 var app = express();
@@ -10,12 +10,12 @@ var app = express();
 //Cargar ficheros rutas
 
 //Middlewares
-app.use(urlencoded({extended:false}));
-app.use(json());
+app.use(bodyParser.urlencoded({extended:false}));
+app.use(bodyParser.json());
 
 //CORS
 
 //Añadir prefijos a rutas
 
 //Exportar modulo (fichero actual)
-export default app;
+module.exports = app;
