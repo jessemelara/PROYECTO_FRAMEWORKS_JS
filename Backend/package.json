@@ -6,6 +6,7 @@
   "scripts": {
     "start": "nodemon lib/index.js",
     "build": "babel src -d lib --watch",
+    "models": "babel models -d lib --watch",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
