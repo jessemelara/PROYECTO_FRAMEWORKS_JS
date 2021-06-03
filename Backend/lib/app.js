@@ -9,20 +9,22 @@ var _express = _interopRequireDefault(require("express"));
 
 var _bodyParser = require("body-parser");
 
+var _articleRouter = _interopRequireDefault(require("./article-router"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 //Cargar modulos de node para crear servidor
 //Ejecutar express (http)
 var app = (0, _express["default"])(); //Cargar ficheros rutas
-//Middlewares
 
+//Middlewares
 app.use((0, _bodyParser.urlencoded)({
   extended: false
 }));
 app.use((0, _bodyParser.json)()); //CORS
 //Añadir prefijos a rutas
 
-app.use('/', article_routes); //Ruta o metodo de prueba
+app.use('/', _articleRouter["default"]); //Ruta o metodo de prueba
 
 app.get('/test', function (req, res) {
   return res.status(200).send({
