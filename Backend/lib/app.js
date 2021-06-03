@@ -21,7 +21,14 @@ app.use((0, _bodyParser.urlencoded)({
 }));
 app.use((0, _bodyParser.json)()); //CORS
 //Añadir prefijos a rutas
-//Exportar modulo (fichero actual)
+//Ruta o metodo de prueba
+
+app.get('/test', function (req, res) {
+  return res.status(200).send({
+    title: "Frameworks de JS",
+    author: "Jesse Melara"
+  });
+}); //Exportar modulo (fichero actual)
 
 var _default = app;
 exports["default"] = _default;

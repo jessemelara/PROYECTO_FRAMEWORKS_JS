@@ -15,5 +15,14 @@ app.use(json());
 
 //Añadir prefijos a rutas
 
+//Ruta o metodo de prueba
+app.get('/test', (req, res) => {
+
+    return res.status(200).send({
+        title: "Frameworks de JS",
+        author: "Jesse Melara"
+    });
+});
+
 //Exportar modulo (fichero actual)
 export default app;
