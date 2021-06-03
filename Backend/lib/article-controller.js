@@ -6,11 +6,9 @@ Object.defineProperty(exports, "__esModule", {
 exports["default"] = void 0;
 var controller = {
   datosCurso: function datosCurso(req, res) {
-    var hola = req.body.hola;
     return res.status(200).send({
       curso: 'Master en Framewors de JS',
-      author: 'Jesse Melara',
-      hola: hola
+      author: 'Jesse Melara'
     });
   },
   test: function test(req, res) {

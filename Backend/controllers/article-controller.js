@@ -1,12 +1,9 @@
 let controller = {
 
     datosCurso: (req, res) => {
-        let hola = req.body.hola;
-
         return res.status(200).send({
             curso: 'Master en Framewors de JS',
-            author: 'Jesse Melara',
-            hola
+            author: 'Jesse Melara'
         });
     },
 
