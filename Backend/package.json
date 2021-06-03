@@ -4,6 +4,11 @@
   "description": "Api RestFul del Master en Frameworks de JS",
   "main": "index.js",
   "scripts": {
+    "start": "nodemon lib/index.js",
+    "build": "babel src -d lib --watch",
+    "models": "babel models -d lib --watch",
+    "controllers": "babel controllers -d lib --watch",
+    "routes": "babel routes -d lib --watch",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -22,5 +27,11 @@
     "express": "^4.17.1",
     "mongoose": "^5.12.12",
     "validator": "^13.6.0"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.14.3",
+    "@babel/core": "^7.14.3",
+    "@babel/preset-env": "^7.14.4",
+    "nodemon": "^2.0.7"
   }
 }
