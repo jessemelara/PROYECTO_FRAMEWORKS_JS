@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "start": "nodemon lib/index.js",
-    "build": "babel src -d lib --watch",
+    "build": "webpack --config webpack.config.js",
+    "build-babel": "babel src -d lib --watch",
     "models": "babel models -d lib --watch",
     "controllers": "babel controllers -d lib --watch",
     "routes": "babel routes -d lib --watch",
