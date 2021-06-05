@@ -3,7 +3,7 @@ import express from 'express';
 import { urlencoded, json } from 'body-parser';
 
 //Ejecutar express (http)
-var app = express();
+const app = express();
 
 //Cargar ficheros rutas
 import article_routes from './routes/article';

@@ -1,6 +1,6 @@
 import app from './app';
-var mongoose = require('mongoose');
-let port = 3900;
+const port = 3900;
+const mongoose = require('mongoose');
 
 mongoose.set('useFindAndModify', false);
 mongoose.Promise = global.Promise;

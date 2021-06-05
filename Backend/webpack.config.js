@@ -1,24 +1,24 @@
-const path = require('path');
+import { resolve } from 'path';
+import webpack from 'webpack';
 
-module.exports = {
-  entry: './src/index.js',
-  output: {
-    filename: 'bundle.js',
-    path: path.join(__dirname, '/'),
-  },
-  module: {
-    rules: [
-      {
-        test: /\.js$/,
-        exclude: /node_modules/,
-        use: {
-          loader: "babel-loader",
-          options: {
-            presets: ['@babel/preset-env']
-          }
+export const entry = './src/index.js';
+export const output = {
+  filename: 'bundle.js',
+  path: resolve(__dirname, '/'),
+};
+export const devtool = 'source-map';
+export const module = {
+  rules: [
+    {
+      test: /\.js$/,
+      exclude: /node_modules/,
+      use: {
+        loader: "babel-loader",
+        options: {
+          presets: ['@babel/preset-env']
         }
       }
-    ]
-  },
-  mode: 'development'
+    }
+  ]
 };
+export const mode = 'development';
