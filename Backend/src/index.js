@@ -1,5 +1,5 @@
-var mongoose = require('mongoose');
 import app from './app';
+var mongoose = require('mongoose');
 let port = 3900;
 
 mongoose.set('useFindAndModify', false);

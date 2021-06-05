@@ -4,12 +4,12 @@ module.exports = {
   entry: './src/index.js',
   output: {
     filename: 'bundle.js',
-    path: path.resolve(__dirname, '/'),
+    path: path.join(__dirname, '/'),
   },
   module: {
     rules: [
       {
-        test: /\.m?js$/,
+        test: /\.js$/,
         exclude: /node_modules/,
         use: {
           loader: "babel-loader",
@@ -19,5 +19,6 @@ module.exports = {
         }
       }
     ]
-  }
+  },
+  mode: 'development'
 };
