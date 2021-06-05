@@ -6,7 +6,7 @@ import { urlencoded, json } from 'body-parser';
 var app = express();
 
 //Cargar ficheros rutas
-import article_routes from '../routes/article-router';
+import article_routes from './routes/article';
 //Middlewares
 app.use(urlencoded({extended:false}));
 app.use(json());
