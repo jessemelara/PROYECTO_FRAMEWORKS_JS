@@ -1,7 +1,7 @@
 import ArticleController from '../controllers/article';
-import express from 'express';
+var express = require('express');
 
-let router = express.Router();
+const router = express.Router();
 
 router.post('/datos-curso', ArticleController.datosCurso);
 router.get('/test-controller', ArticleController.test);

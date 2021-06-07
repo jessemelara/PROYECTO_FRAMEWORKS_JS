@@ -1,7 +1,7 @@
 import mongoose from 'mongoose';
 
-let Schema = mongoose.Schema;
-let ArticleSchema = Schema({
+const Schema = mongoose.Schema;
+const ArticleSchema = Schema({
     title: String,
     content: String,
     date: { type: Date, default: Date.now},

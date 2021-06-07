@@ -1,12 +1,12 @@
 //Cargar modulos de node para crear servidor
-import express from 'express';
+const express = require('express');
 import { urlencoded, json } from 'body-parser';
 
 //Ejecutar express (http)
 const app = express();
 
 //Cargar ficheros rutas
-import article_routes from './routes/article';
+import router from './routes/article';
 //Middlewares
 app.use(urlencoded({extended:false}));
 app.use(json());
@@ -14,7 +14,7 @@ app.use(json());
 //CORS
 
 //Añadir prefijos a rutas
-app.use('/', article_routes);
+app.use('/', router);
 
 //Ruta o metodo de prueba
 app.get('/test', (req, res) => {
@@ -25,5 +25,5 @@ app.get('/test', (req, res) => {
     });
 });
 
-//Exportar modulo (fichero actual)
-export default app;
+//Exportar modulo
+module.exports = app;
