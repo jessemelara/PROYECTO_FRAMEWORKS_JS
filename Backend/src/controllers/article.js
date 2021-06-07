@@ -1,3 +1,6 @@
+const validator = require('validator');
+const Article = require('../models/article')
+
 const controller = {
 
     datosCurso: (req, res) => {
@@ -14,9 +17,34 @@ const controller = {
     },
 
     save: (req, res) => {
-        return res.status(200).send({
-            message: 'Soy la accion SAVE de mi controlador de articulos'
-        });
+        //Recoger parametros con POST
+        const params = req.body;
+        //Validar datos (validator)
+        try{
+            var validate_title = !validator.isEmpty(params.title);
+            var validate_content = !validator.isEmpty(params.content);
+        }catch(err){
+            return res.status(200).send({
+                message: 'Faltan datos por enviar'
+            });
+        }
+
+        if(validate_title && validate_content){
+            //Crear el objeto a guardar
+
+            //Asignar valores
+
+            //Guardar el articulo
+
+            //Devolver una respuesta
+            return res.status(200).send({
+                message: params,
+            });
+        }else {
+            return res.status(200).send({
+                message: 'Los datos no son validos'
+            });
+        }
     }
 }; //end controller
 
