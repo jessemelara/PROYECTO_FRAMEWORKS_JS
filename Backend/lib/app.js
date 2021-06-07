@@ -19,7 +19,7 @@ app.use((0, _bodyParser.urlencoded)({
 app.use((0, _bodyParser.json)()); //CORS
 //Añadir prefijos a rutas
 
-app.use('/', _article["default"]); //Ruta o metodo de prueba
+app.use('/api', _article["default"]); //Ruta o metodo de prueba
 
 app.get('/test', function (req, res) {
   return res.status(200).send({

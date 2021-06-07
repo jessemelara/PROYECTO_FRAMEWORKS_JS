@@ -11,8 +11,11 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "d
 
 var express = require('express');
 
-var router = express.Router();
+var router = express(); //Rutas de prueba
+
 router.post('/datos-curso', _article["default"].datosCurso);
-router.get('/test-controller', _article["default"].test);
+router.get('/test-controller', _article["default"].test); //Rutas para articulos
+
+router.post('/save', _article["default"].save);
 var _default = router;
 exports["default"] = _default;

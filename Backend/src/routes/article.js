@@ -1,9 +1,13 @@
-import ArticleController from '../controllers/article';
+import controller from '../controllers/article';
 var express = require('express');
 
-const router = express.Router();
+const router = express();
 
-router.post('/datos-curso', ArticleController.datosCurso);
-router.get('/test-controller', ArticleController.test);
+//Rutas de prueba
+router.post('/datos-curso', controller.datosCurso);
+router.get('/test-controller', controller.test);
+
+//Rutas para articulos
+router.post('/save', controller.save);
 
 export default router;

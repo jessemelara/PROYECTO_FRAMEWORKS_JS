@@ -14,7 +14,7 @@ app.use(json());
 //CORS
 
 //Añadir prefijos a rutas
-app.use('/', router);
+app.use('/api', router);
 
 //Ruta o metodo de prueba
 app.get('/test', (req, res) => {
