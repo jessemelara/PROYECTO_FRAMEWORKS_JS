@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "nodemon bundle.js",
-    "build": "webpack --watch",
+    "build": "webpack --watch --stats-error-details",
     "build-babel": "babel src -d lib --watch",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
