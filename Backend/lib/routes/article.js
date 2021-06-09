@@ -18,5 +18,6 @@ router.get('/test-controller', _article["default"].test); //Rutas para articulos
 
 router.post('/save', _article["default"].save);
 router.get('/articles/:last?', _article["default"].getArticles);
+router.get('/article/:id', _article["default"].getArticle);
 var _default = router;
 exports["default"] = _default;

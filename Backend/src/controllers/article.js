@@ -1,5 +1,3 @@
-import article from '../models/article';
-
 const validator = require('validator');
 const Article = require('../models/article')
 
@@ -84,13 +82,41 @@ const controller = {
             if(!articles){
                 return res.status(404).send({
                     status: 'error',
-                    message: 'No hay articulos'
+                    message: 'No hay articulos para mostrar'
                 });
             }
 
             return res.status(200).send({
                 status: 'success',
                 articles
+            });
+        })
+    },
+
+    getArticle: (req, res) => {
+        //Recoger el id de la url
+        const articleId = req.params.id;
+
+        //Comprobar que existe
+        if(!articleId || articleId == null){
+            return res.status(404).send({
+                status: 'error',
+                message: 'No existe el articulo'
+            });    
+        }
+        //Buscar el articulo
+        Article.findById(articleId, (err, article) => {
+            if(err || !article){
+                return res.status(404).send({
+                    status: 'error',
+                    message: 'No hay articulos para mostrar'
+                });
+            }
+
+            //Devolverlo en json
+            return res.status(200).send({
+                status: 'success',
+                article
             });
         })
     }

@@ -5,10 +5,6 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports["default"] = void 0;
 
-var _article2 = _interopRequireDefault(require("../models/article"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
-
 var validator = require('validator');
 
 var Article = require('../models/article');
@@ -41,14 +37,13 @@ var controller = {
 
     if (validate_title && validate_content) {
       //Crear el objeto a guardar
-      var _article = new Article(); //Asignar valores
+      var article = new Article(); //Asignar valores
 
+      article.title = params.title;
+      article.content = params.content;
+      article.image = null; //Guardar el articulo
 
-      _article.title = params.title;
-      _article.content = params.content;
-      _article.image = null; //Guardar el articulo
-
-      _article.save(function (err, articleStored) {
+      article.save(function (err, articleStored) {
         if (err || !articleStored) {
           return res.status(404).send({
             status: 'error',
@@ -59,7 +54,7 @@ var controller = {
 
         return res.status(200).send({
           status: 'success',
-          article: _article
+          article: article
         });
       });
     } else {
@@ -90,13 +85,40 @@ var controller = {
       if (!articles) {
         return res.status(404).send({
           status: 'error',
-          message: 'No hay articulos'
+          message: 'No hay articulos para mostrar'
         });
       }
 
       return res.status(200).send({
         status: 'success',
         articles: articles
+      });
+    });
+  },
+  getArticle: function getArticle(req, res) {
+    //Recoger el id de la url
+    var articleId = req.params.id; //Comprobar que existe
+
+    if (!articleId || articleId == null) {
+      return res.status(404).send({
+        status: 'error',
+        message: 'No existe el articulo'
+      });
+    } //Buscar el articulo
+
+
+    Article.findById(articleId, function (err, article) {
+      if (err || !article) {
+        return res.status(404).send({
+          status: 'error',
+          message: 'No hay articulos para mostrar'
+        });
+      } //Devolverlo en json
+
+
+      return res.status(200).send({
+        status: 'success',
+        article: article
       });
     });
   }
