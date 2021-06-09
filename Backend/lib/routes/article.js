@@ -17,5 +17,6 @@ router.post('/datos-curso', _article["default"].datosCurso);
 router.get('/test-controller', _article["default"].test); //Rutas para articulos
 
 router.post('/save', _article["default"].save);
+router.get('/articles', _article["default"].getArticles);
 var _default = router;
 exports["default"] = _default;

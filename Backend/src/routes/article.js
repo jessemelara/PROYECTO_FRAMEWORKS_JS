@@ -9,5 +9,6 @@ router.get('/test-controller', controller.test);
 
 //Rutas para articulos
 router.post('/save', controller.save);
+router.get('/articles', controller.getArticles);
 
 export default router;

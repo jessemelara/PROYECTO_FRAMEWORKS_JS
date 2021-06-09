@@ -5,6 +5,10 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports["default"] = void 0;
 
+var _article2 = _interopRequireDefault(require("../models/article"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+
 var validator = require('validator');
 
 var Article = require('../models/article');
@@ -37,13 +41,14 @@ var controller = {
 
     if (validate_title && validate_content) {
       //Crear el objeto a guardar
-      var article = new Article(); //Asignar valores
+      var _article = new Article(); //Asignar valores
 
-      article.title = params.title;
-      article.content = params.content;
-      article.image = null; //Guardar el articulo
 
-      article.save(function (err, articleStored) {
+      _article.title = params.title;
+      _article.content = params.content;
+      _article.image = null; //Guardar el articulo
+
+      _article.save(function (err, articleStored) {
         if (err || !articleStored) {
           return res.status(404).send({
             status: 'error',
@@ -54,7 +59,7 @@ var controller = {
 
         return res.status(200).send({
           status: 'success',
-          article: article
+          article: _article
         });
       });
     } else {
@@ -63,6 +68,29 @@ var controller = {
         message: 'Los datos no son validos'
       });
     }
+  },
+  getArticles: function getArticles(req, res) {
+    //Find
+    Article.find({}).sort('-_id').exec(function (err, articles) {
+      if (err) {
+        return res.status(500).send({
+          status: 'error',
+          message: 'Error al devolver los articulos'
+        });
+      }
+
+      if (!articles) {
+        return res.status(404).send({
+          status: 'error',
+          message: 'No hay articulos'
+        });
+      }
+
+      return res.status(200).send({
+        status: 'success',
+        articles: articles
+      });
+    });
   }
 }; //end controller
 
