@@ -30,20 +30,36 @@ var controller = {
       var validate_content = !validator.isEmpty(params.content);
     } catch (err) {
       return res.status(200).send({
+        status: 'error',
         message: 'Faltan datos por enviar'
       });
     }
 
     if (validate_title && validate_content) {
       //Crear el objeto a guardar
-      //Asignar valores
-      //Guardar el articulo
-      //Devolver una respuesta
-      return res.status(200).send({
-        message: params
+      var article = new Article(); //Asignar valores
+
+      article.title = params.title;
+      article.content = params.content;
+      article.image = null; //Guardar el articulo
+
+      article.save(function (err, articleStored) {
+        if (err || !articleStored) {
+          return res.status(404).send({
+            status: 'error',
+            message: 'El articulo no se ha guardado'
+          });
+        } //Devolver una respuesta
+
+
+        return res.status(200).send({
+          status: 'success',
+          article: article
+        });
       });
     } else {
       return res.status(200).send({
+        status: 'error',
         message: 'Los datos no son validos'
       });
     }

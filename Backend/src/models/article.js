@@ -1,4 +1,4 @@
-import mongoose from 'mongoose';
+const mongoose = require('mongoose');
 
 const Schema = mongoose.Schema;
 const ArticleSchema = Schema({
@@ -8,5 +8,5 @@ const ArticleSchema = Schema({
     image: String
 });
 
-export default mongoose.model('Article', ArticleSchema);
+module.exports = mongoose.model('Article', ArticleSchema);
 // articles --> guarda documentos de este tipo y con estructura dentro de la coleccion
