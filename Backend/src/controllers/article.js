@@ -63,8 +63,17 @@ const controller = {
     },
 
     getArticles: (req, res) => {
+        const query = Article.find({})
+        
+        const last = req.params.last;
+        console.log(last);
+        
+        if(last || last != undefined){
+            query.limit(5)
+        }
+
         //Find
-        Article.find({}).sort('-_id').exec((err, articles) => {
+        query.sort('-_id').exec((err, articles) => {
             if(err){
                 return res.status(500).send({
                     status: 'error',

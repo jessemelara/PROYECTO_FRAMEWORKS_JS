@@ -70,8 +70,16 @@ var controller = {
     }
   },
   getArticles: function getArticles(req, res) {
-    //Find
-    Article.find({}).sort('-_id').exec(function (err, articles) {
+    var query = Article.find({});
+    var last = req.params.last;
+    console.log(last);
+
+    if (last || last != undefined) {
+      query.limit(5);
+    } //Find
+
+
+    query.sort('-_id').exec(function (err, articles) {
       if (err) {
         return res.status(500).send({
           status: 'error',
