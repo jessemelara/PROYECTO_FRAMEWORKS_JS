@@ -3,6 +3,9 @@ var express = require('express');
 
 const router = express();
 
+const multipart = require('connect-multiparty');
+const md_upload = multipart({ uploadDir: './src/upload/articles' });
+
 //Rutas de prueba
 router.post('/datos-curso', controller.datosCurso);
 router.get('/test-controller', controller.test);
@@ -13,5 +16,6 @@ router.get('/articles/:last?', controller.getArticles);
 router.get('/article/:id', controller.getArticle);
 router.put('/article/:id', controller.update);
 router.delete('/article/:id', controller.delete);
+router.post('/upload-image/:id', md_upload, controller.upload);
 
 export default router;

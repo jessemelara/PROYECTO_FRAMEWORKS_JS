@@ -11,7 +11,13 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "d
 
 var express = require('express');
 
-var router = express(); //Rutas de prueba
+var router = express();
+
+var multipart = require('connect-multiparty');
+
+var md_upload = multipart({
+  uploadDir: './src/upload/articles'
+}); //Rutas de prueba
 
 router.post('/datos-curso', _article["default"].datosCurso);
 router.get('/test-controller', _article["default"].test); //Rutas para articulos
@@ -21,5 +27,6 @@ router.get('/articles/:last?', _article["default"].getArticles);
 router.get('/article/:id', _article["default"].getArticle);
 router.put('/article/:id', _article["default"].update);
 router["delete"]('/article/:id', _article["default"]["delete"]);
+router.post('/upload-image/:id', md_upload, _article["default"].upload);
 var _default = router;
 exports["default"] = _default;
