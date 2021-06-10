@@ -20,5 +20,6 @@ router.post('/save', _article["default"].save);
 router.get('/articles/:last?', _article["default"].getArticles);
 router.get('/article/:id', _article["default"].getArticle);
 router.put('/article/:id', _article["default"].update);
+router["delete"]('/article/:id', _article["default"]["delete"]);
 var _default = router;
 exports["default"] = _default;
