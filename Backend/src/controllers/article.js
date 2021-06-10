@@ -265,6 +265,37 @@ const controller = {
                 });
             }
         });
+    },
+
+    search: (req, res) => {
+        //Sacar el string a buscar
+        var searchString = req.params.search;
+        //Find
+        Article.find( { "$or": [
+            { "title": { "$regex": searchString, "$options": "i"}},
+            { "content": { "$regex": searchString, "$options": "i"}}
+        ]})
+        .sort([['date', 'descending']])
+        .exec((err, articles) => {
+            if(err){
+                return res.status(500).send({
+                    status: 'error',
+                    message: 'Error en la peticion',
+                });
+            };
+
+            if(!articles || articles.length <= 0){
+                return res.status(404).send({
+                    status: 'error',
+                    message: 'No hay articulos que coincidan con tu busqueda'
+                });
+            };
+
+            return res.status(200).send({
+                status: 'success',
+                articles
+            });
+        });
     }
 }; //end controller
 
