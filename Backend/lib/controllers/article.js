@@ -121,6 +121,56 @@ var controller = {
         article: article
       });
     });
+  },
+  update: function update(req, res) {
+    //Recoger el id por la url
+    var articleId = req.params.id; //Recoger los datos que llegan por put
+
+    var params = req.body; //Validar datos
+
+    try {
+      var validate_title = !validator.isEmpty(params.title);
+      var validate_content = !validator.isEmpty(params.content);
+    } catch (err) {
+      return res.status(200).send({
+        status: 'error',
+        message: 'Faltan datos por enviar'
+      });
+    }
+
+    if (validate_title && validate_content) {
+      //Find & update
+      Article.findOneAndUpdate({
+        _id: articleId
+      }, params, {
+        "new": true
+      }, function (err, articleUpdated) {
+        if (err) {
+          return res.status(500).send({
+            status: 'error',
+            message: 'Error al actualizar'
+          });
+        }
+
+        if (!articleUpdated) {
+          return res.status(404).send({
+            status: 'error',
+            message: 'El articulo no existe'
+          });
+        }
+
+        return res.status(200).send({
+          status: 'success',
+          article: articleUpdated
+        });
+      });
+    } else {
+      //Devolver respuesta
+      return res.status(200).send({
+        status: 'error',
+        message: 'La validacion no es correcta'
+      });
+    }
   }
 }; //end controller
 
