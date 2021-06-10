@@ -1,3 +1,5 @@
+import { exists } from '../models/article';
+
 const validator = require('validator');
 const fs = require('fs');
 const path = require('path');
@@ -235,7 +237,7 @@ const controller = {
             //Buscar el articulo, asignarle el nombre de la imagen y actualizarlo
             Article.findOneAndUpdate({_id: articleId}, {image: file_name}, {new: true}, (err, articleUpdated) => {
                 if(err || !articleUpdated){
-                    return res.status(404).send({
+                    return res.status(200).send({
                         status: 'error',
                         message: 'Error al guardar la imagen del articulo'
                     });
@@ -247,6 +249,22 @@ const controller = {
                 });
             });
         }
+    },
+
+    getImage: (req, res) => {
+        var file = req.params.image;
+        var path_file = './src/upload/articles/'+file;
+
+        fs.exists(path_file, (exists) => {
+            if(exists){
+                return res.sendFile(path.resolve(path_file));
+            }else{
+                return res.status(404).send({
+                    status: 'error',
+                    message: 'La imagen no existe'
+                });
+            }
+        });
     }
 }; //end controller
 

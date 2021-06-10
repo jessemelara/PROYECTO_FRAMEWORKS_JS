@@ -17,5 +17,6 @@ router.get('/article/:id', controller.getArticle);
 router.put('/article/:id', controller.update);
 router.delete('/article/:id', controller.delete);
 router.post('/upload-image/:id', md_upload, controller.upload);
+router.get('/get-image/:image', controller.getImage);
 
 export default router;

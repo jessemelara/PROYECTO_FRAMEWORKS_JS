@@ -5,6 +5,8 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports["default"] = void 0;
 
+var _article = require("../models/article");
+
 var validator = require('validator');
 
 var fs = require('fs');
@@ -244,7 +246,7 @@ var controller = {
         "new": true
       }, function (err, articleUpdated) {
         if (err || !articleUpdated) {
-          return res.status(404).send({
+          return res.status(200).send({
             status: 'error',
             message: 'Error al guardar la imagen del articulo'
           });
@@ -256,6 +258,20 @@ var controller = {
         });
       });
     }
+  },
+  getImage: function getImage(req, res) {
+    var file = req.params.image;
+    var path_file = './src/upload/articles/' + file;
+    fs.exists(path_file, function (exists) {
+      if (exists) {
+        return res.sendFile(path.resolve(path_file));
+      } else {
+        return res.status(404).send({
+          status: 'error',
+          message: 'La imagen no existe'
+        });
+      }
+    });
   }
 }; //end controller
 
