@@ -219,7 +219,7 @@ var controller = {
     var file_path = req.files.file0.path;
     var file_split = file_path.split('\\'); //Nombre del archivo
 
-    var file_name = file_split[2]; //Extension del fichero
+    var file_name = file_split[3]; //Extension del fichero
 
     var extension_split = file_name.split('\.');
     var file_ext = extension_split[1]; //Comprobar la extension (solo imagenes)
@@ -229,15 +229,14 @@ var controller = {
       fs.unlink(file_path, function (err) {
         return res.status(200).send({
           status: 'error',
-          message: 'La extension de la imagen no es valida',
-          path: file_path
+          message: 'La extension de la imagen no es valida'
         });
       });
     } else {
       //Si todo es valido
       var articleId = req.params.id; //Buscar el articulo, asignarle el nombre de la imagen y actualizarlo
 
-      Article.findById({
+      Article.findOneAndUpdate({
         _id: articleId
       }, {
         image: file_name

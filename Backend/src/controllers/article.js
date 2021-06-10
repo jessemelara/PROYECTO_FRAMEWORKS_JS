@@ -211,15 +211,15 @@ const controller = {
             });
         }
         //Conseguir el nombre y la extension del archivo
-        const file_path = req.files.file0.path;
-        const file_split = file_path.split('\\');
+        var file_path = req.files.file0.path;
+        var file_split = file_path.split('\\');
 
         //Nombre del archivo
-        var file_name = file_split[2];
+        var file_name = file_split[3];
 
         //Extension del fichero
-        const extension_split = file_name.split('\.');
-        const file_ext = extension_split[1];
+        var extension_split = file_name.split('\.');
+        var file_ext = extension_split[1];
         //Comprobar la extension (solo imagenes)
         if(file_ext != 'png' && file_ext != 'jpg' && file_ext != 'jpeg' && file_ext != 'gif'){
             //Borrar el fichero
@@ -227,14 +227,13 @@ const controller = {
                 return res.status(200).send({
                     status: 'error',
                     message: 'La extension de la imagen no es valida',
-                    path: file_path
                 });
             });
         }else {
             //Si todo es valido
             const articleId = req.params.id;
             //Buscar el articulo, asignarle el nombre de la imagen y actualizarlo
-            Article.findById({_id: articleId}, {image: file_name}, {new: true}, (err, articleUpdated) => {
+            Article.findOneAndUpdate({_id: articleId}, {image: file_name}, {new: true}, (err, articleUpdated) => {
                 if(err || !articleUpdated){
                     return res.status(404).send({
                         status: 'error',
