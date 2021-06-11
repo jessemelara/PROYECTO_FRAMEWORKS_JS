@@ -2,13 +2,11 @@
   "name": "backend",
   "version": "1.0.0",
   "description": "Api RestFul del Master en Frameworks de JS",
-  "main": "index.js",
+  "main": "lib/index.js",
   "scripts": {
     "start": "nodemon lib/index.js",
-    "build": "babel src -d lib --watch",
-    "models": "babel models -d lib --watch",
-    "controllers": "babel controllers -d lib --watch",
-    "routes": "babel routes -d lib --watch",
+    "build": "webpack --watch --stats-error-details",
+    "build-babel": "babel src -d lib --watch",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -32,6 +30,10 @@
     "@babel/cli": "^7.14.3",
     "@babel/core": "^7.14.3",
     "@babel/preset-env": "^7.14.4",
-    "nodemon": "^2.0.7"
+    "babel-loader": "^8.2.2",
+    "nodemon": "^2.0.7",
+    "webpack": "^5.38.1",
+    "webpack-cli": "^4.7.0",
+    "webpack-dev-middleware": "^5.0.0"
   }
 }
