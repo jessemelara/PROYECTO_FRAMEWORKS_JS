@@ -8,6 +8,7 @@ import { BlogComponent } from "./components/blog/blog.component";
 import { FormularioComponent } from "./components/formulario/formulario.component";
 import { Pagina1Component } from "./components/pagina1/pagina1.component";
 import { Pagina2Component } from "./components/pagina2/pagina2.component";
+import { ErrorComponent } from "./components/error/error.component";
 
 //Array de rutas
 const appRoutes: Routes = [
@@ -16,7 +17,8 @@ const appRoutes: Routes = [
     {path: 'blog', component: BlogComponent},
     {path: 'formulario', component: FormularioComponent},
     {path: 'pagina1', component: Pagina1Component},
-    {path: 'pagina2', component: Pagina2Component}
+    {path: 'pagina2', component: Pagina2Component},
+    {path: '**', component: ErrorComponent}
 ];
 
 //Exportar el modulo de rutas
