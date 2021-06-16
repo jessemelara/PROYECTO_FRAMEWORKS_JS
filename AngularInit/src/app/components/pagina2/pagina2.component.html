@@ -1,1 +1,14 @@
-<h2 class="subheader">Página 2</h2>
+<h2 class="subheader">Listado de frutas</h2>
+
+<div id="articles" *ngIf="frutas">
+    <article class="article-item" *ngFor="let fruta of frutas">
+        <div class="image-wrap">
+            <img src="{{fruta.image}}" alt="{{fruta.title}}">
+        </div>
+        <h2>{{fruta.title}}</h2>
+        <span class="date">
+            Hace 5 minutos
+        </span>
+        <a [routerLink]="['/pagina2']">Leer más</a>
+    </article>
+</div>
