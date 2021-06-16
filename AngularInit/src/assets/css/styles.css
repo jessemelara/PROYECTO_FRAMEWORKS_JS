@@ -186,7 +186,7 @@ body {
 }
 
 .btn {
-    display: block;
+    display: inline-block;
     background: black;
     color: white;
     padding: 15px;

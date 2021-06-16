@@ -1,8 +1,12 @@
 <h2 class="subheader">Página 1</h2>
 <div *ngIf="nombre && apellidos">
-    <h3>El nombre es: {{nombre}} {{apellidos}}</h3>
+    <h3>Su nombre es: {{nombre}} {{apellidos}}</h3>
 </div>
 
 <div *ngIf="!nombre || !apellidos">
     <h3>No hay parámetros que mostrar</h3>
+</div>
+
+<div>
+    <button class="btn" (click)="redireccion()">Nombre y apellidos</button>
 </div>

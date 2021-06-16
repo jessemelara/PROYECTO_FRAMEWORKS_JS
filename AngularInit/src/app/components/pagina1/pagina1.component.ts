@@ -21,5 +21,8 @@ export class Pagina1Component implements OnInit {
       this.apellidos = params.apellidos;    
     })
   }
-
+  
+  redireccion(){
+    this._router.navigate(['/pagina1', 'Jesse', 'Melara']);
+  }
 }
