@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router, ActivatedRoute, Params } from '@angular/router';
 
 @Component({
   selector: 'app-pagina1',
@@ -6,10 +7,19 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./pagina1.component.css']
 })
 export class Pagina1Component implements OnInit {
+  public nombre!: string;
+  public apellidos!: string;
 
-  constructor() { }
-
+  constructor( 
+    private _route: ActivatedRoute,
+    private _router: Router
+  ) {}
+    
   ngOnInit(): void {
+    this._route.params.subscribe((params: Params) => {
+      this.nombre = params.nombre;
+      this.apellidos = params.apellidos;    
+    })
   }
 
 }

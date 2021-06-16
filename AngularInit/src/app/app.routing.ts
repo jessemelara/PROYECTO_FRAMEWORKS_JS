@@ -17,6 +17,7 @@ const appRoutes: Routes = [
     {path: 'blog', component: BlogComponent},
     {path: 'formulario', component: FormularioComponent},
     {path: 'pagina1', component: Pagina1Component},
+    {path: 'pagina1/:nombre/:apellidos', component: Pagina1Component},
     {path: 'pagina2', component: Pagina2Component},
     {path: '**', component: ErrorComponent}
 ];
