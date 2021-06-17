@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Fruta } from 'src/app/models/fruta';
 
 @Component({
   selector: 'app-pagina2',
@@ -6,14 +7,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./pagina2.component.css']
 })
 export class Pagina2Component implements OnInit {
-  public frutas!: Array<any>;
+  public frutas!: Fruta[];
 
   constructor() {
     this.frutas = [
-      {title: "Apples", image: "https://www.osfhealthcare.org/blog/wp-content/uploads/2019/08/apples-OG.jpg"},
-      {title: "Strawberries", image: "https://www.besthealthmag.ca/wp-content/uploads/2020/08/mushy-strawberries.jpg"},
-      {title: "Watermelon", image: "https://d.newsweek.com/en/full/1812007/watermelon-slices.jpg"},
-      {title: "Cherries", image: "https://extension.usu.edu/preserve-the-harvest/images/cherries.jpg"}
+      new Fruta("Apples", "https://www.osfhealthcare.org/blog/wp-content/uploads/2019/08/apples-OG.jpg"),
+      new Fruta("Strawberries", "https://www.besthealthmag.ca/wp-content/uploads/2020/08/mushy-strawberries.jpg"),
+      new Fruta("Watermelon", "https://d.newsweek.com/en/full/1812007/watermelon-slices.jpg"),
+      new Fruta("Cherries", "https://extension.usu.edu/preserve-the-harvest/images/cherries.jpg")
     ]
   }
   ngOnInit(): void {
