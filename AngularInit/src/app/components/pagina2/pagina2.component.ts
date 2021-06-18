@@ -7,6 +7,7 @@ import { Fruta } from 'src/app/models/fruta';
   styleUrls: ['./pagina2.component.css']
 })
 export class Pagina2Component implements OnInit {
+  pg2Text = "Sección de Frutas";
   public frutas!: Fruta[];
 
   constructor() {

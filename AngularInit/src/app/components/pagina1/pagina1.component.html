@@ -1,14 +1,22 @@
-<h2 class="subheader">Página 1</h2>
-<div *ngIf="nombre && apellidos; then Params else noParams"></div>
+<app-slider [title]="pg1Text"></app-slider>
 
-<ng-template #Params>
-    <h3>Su nombre es: {{nombre}} {{apellidos}}</h3>
-</ng-template>
+<div class="center">
+  <section id="content">
+    <h2 class="subheader">Página 1</h2>
+    <div *ngIf="nombre && apellidos; then Params else noParams"></div>
 
-<ng-template #noParams>
-    <h3>No hay parámetros que mostrar</h3>
-</ng-template>
+    <ng-template #Params>
+        <h3>Su nombre es: {{nombre}} {{apellidos}}</h3>
+    </ng-template>
 
-<div>
-    <button class="btn" (click)="redireccion()">Nombre y apellidos</button>
+    <ng-template #noParams>
+        <h3>No hay parámetros que mostrar</h3>
+    </ng-template>
+
+    <div>
+        <button class="btn" (click)="redireccion()">Nombre y apellidos</button>
+    </div>
+  </section>
+  
+  <app-sidebar></app-sidebar>
 </div>

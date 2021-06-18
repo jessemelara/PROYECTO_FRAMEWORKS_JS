@@ -7,6 +7,7 @@ import { Router, ActivatedRoute, Params } from '@angular/router';
   styleUrls: ['./pagina1.component.css']
 })
 export class Pagina1Component implements OnInit {
+  pg1Text = "Sección de párametros en la URL";
   public nombre!: string;
   public apellidos!: string;
 

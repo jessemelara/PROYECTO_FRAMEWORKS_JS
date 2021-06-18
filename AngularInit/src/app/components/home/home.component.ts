@@ -6,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
+  homeText = "Bienvenido al Master en Angular JS";
   public title: string;
 
   constructor() { 
