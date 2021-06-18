@@ -1,8 +1,8 @@
-<app-slider [title]="pg2Text"></app-slider>
+<app-slider [title]="pg2Text" [size]="'small'"></app-slider>
 
 <div class="center">
   <section id="content">
-    <h2 class="subheader">Listado de frutas</h2>
+    <h1 class="subheader">Listado de frutas</h1>
 
     <div id="articles" *ngIf="frutas">
         <article class="article-item" *ngFor="let fruta of frutas">
