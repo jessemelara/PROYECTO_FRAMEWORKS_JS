@@ -5,16 +5,9 @@
     <h1 class="subheader">Listado de frutas</h1>
 
     <div id="articles" *ngIf="frutas">
-        <article class="article-item" *ngFor="let fruta of frutas">
-            <div class="image-wrap">
-                <img src="{{fruta.image}}" alt="{{fruta.name}}">
-            </div>
-            <h2>{{fruta.name}}</h2>
-            <span class="date">
-                Hace 5 minutos
-            </span>
-            <a [routerLink]="['/pagina2']">Leer más</a>
-        </article>
+        <div *ngFor="let fruta of frutas">
+          <app-fruta [fruta]="fruta"></app-fruta>
+        </div>
     </div>
     
   </section>

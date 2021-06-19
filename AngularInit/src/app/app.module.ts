@@ -13,6 +13,7 @@ import { FormularioComponent } from './components/formulario/formulario.componen
 import { Pagina1Component } from './components/pagina1/pagina1.component';
 import { Pagina2Component } from './components/pagina2/pagina2.component';
 import { ErrorComponent } from './components/error/error.component';
+import { FrutaComponent } from './components/fruta/fruta.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { ErrorComponent } from './components/error/error.component';
     FormularioComponent,
     Pagina1Component,
     Pagina2Component,
-    ErrorComponent
+    ErrorComponent,
+    FrutaComponent
   ],
   imports: [
     BrowserModule,
