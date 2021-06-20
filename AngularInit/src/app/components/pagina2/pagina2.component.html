@@ -5,7 +5,7 @@
     
     <div id="favorite" *ngIf="favorite">
       <h2 class="subheader">Fruta favorita</h2>
-      <h3>{{favorite.name}}</h3>
+      <h3>{{favorite.name | uppercase}}</h3>
         <img src="{{favorite.image}}" alt="{{favorite.name}}" height="120px" width="120px">
     </div>
 
