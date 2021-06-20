@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { Fruta } from 'src/app/models/fruta';
 
 @Component({
@@ -8,10 +8,16 @@ import { Fruta } from 'src/app/models/fruta';
 })
 export class FrutaComponent implements OnInit {
   @Input() fruta!: Fruta;
-  
+  @Output() onFavorite = new EventEmitter();
+
   constructor() { }
 
   ngOnInit(): void {
   }
 
+  toSelect(event:any, fruta:any){
+    this.onFavorite.emit({
+      fruta: fruta
+    })
+  }
 }

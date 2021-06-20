@@ -9,6 +9,7 @@ import { Fruta } from 'src/app/models/fruta';
 export class Pagina2Component implements OnInit {
   pg2Text = "Sección de Frutas";
   public frutas!: Fruta[];
+  public favorite!: Fruta;
 
   constructor() {
     this.frutas = [
@@ -22,4 +23,7 @@ export class Pagina2Component implements OnInit {
     console.log(this.frutas);
   }
 
+  showFavorite(event:any){
+    this.favorite = event.fruta;
+  }
 }

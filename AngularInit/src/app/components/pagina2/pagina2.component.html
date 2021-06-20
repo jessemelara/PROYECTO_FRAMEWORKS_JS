@@ -2,11 +2,18 @@
 
 <div class="center">
   <section id="content">
+    
+    <div id="favorite" *ngIf="favorite">
+      <h2 class="subheader">Fruta favorita</h2>
+      <h3>{{favorite.name}}</h3>
+        <img src="{{favorite.image}}" alt="{{favorite.name}}" height="120px" width="120px">
+    </div>
+
     <h1 class="subheader">Listado de frutas</h1>
 
     <div id="articles" *ngIf="frutas">
         <div *ngFor="let fruta of frutas">
-          <app-fruta [fruta]="fruta"></app-fruta>
+          <app-fruta [fruta]="fruta" (onFavorite)="showFavorite($event)"></app-fruta>
         </div>
     </div>
     
