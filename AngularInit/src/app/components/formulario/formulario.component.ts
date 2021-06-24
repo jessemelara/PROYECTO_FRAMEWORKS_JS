@@ -21,8 +21,12 @@ export class FormularioComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  onSubmit(){
-    alert("Formulario enviado");
-    console.log(this.user);
+  onSubmit(userForm:any){
+    if(userForm.form.valid){
+      alert("Formulario enviado");
+      console.log(this.user);
+    }else{
+      userForm.form.markAllAsTouched();
+    }
   }
 }

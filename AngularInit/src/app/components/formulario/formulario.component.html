@@ -3,27 +3,33 @@
 <div class="center">
   <section id="content">
     <h1 class="subheader">Formulario</h1>
-    {{user.nombre}}<br>
+    <!-- {{user.nombre}}<br>
     {{user.apellido}}<br>
     {{user.bio}}<br>
-    {{user.genero}}<br>
-    <form #userForm="ngForm" class="mid-form" (ngSubmit)="onSubmit()">
+    {{user.genero}}<br> -->
+    <form #userForm="ngForm" class="mid-form" (ngSubmit)="onSubmit(userForm)">
       <div class="form-group">
-          <label for="nombre">Nombre</label>
-          <input type="text" name="nombre" #nombre="ngModel" [(ngModel)]="user.nombre">
+          <label for="nombre">Nombre</label> 
+          <input type="text" name="nombre" #nombre="ngModel" [(ngModel)]="user.nombre" required pattern="[a-zA-Z\u00E0-\u00FC\u00d1 ]+">
+          <div *ngIf="!nombre.valid && (nombre.dirty || nombre.touched)"><small style="color: brown;">*El nombre no es válido</small></div>
       </div>
       <div class="form-group">
-          <label for="apellido">Apellido</label>
-          <input type="text" name="apellido" #apellido="ngModel" [(ngModel)]="user.apellido">
+          <label for="apellido">Apellidos</label>
+          <input type="text" name="apellidos" #apellidos="ngModel" [(ngModel)]="user.apellido" required pattern="[a-zA-Z\u00E0-\u00FC\u00d1 ]+">
+          <div *ngIf="!apellidos.valid && (apellidos.dirty || apellidos.touched)"><small style="color: brown;">*Los apellidos no son válidos</small></div>
       </div>
       <div class="form-group">
-          <label for="bio">Biografia</label>
-          <textarea name="bio" #bio="ngModel" [(ngModel)]="user.bio"></textarea>
+          <label for="bio">Biografía</label>
+          <textarea name="bio" #bio="ngModel" [(ngModel)]="user.bio" required></textarea>
+          <div *ngIf="!bio.valid && bio.touched"><small style="color: brown;">*La biografía no es válida</small></div>
       </div>
-      <div class="form-group radio-buttons">
-          <input type="radio" name="genero" value="Hombre" [(ngModel)]="user.genero"> Hombre<br>
-          <input type="radio" name="genero" value="Mujer" [(ngModel)]="user.genero"> Mujer<br>
-          <input type="radio" name="genero" value="No especificar" [(ngModel)]="user.genero"> No especificar
+      <div class="form-group radio-buttons">  
+        <input type="radio" name="genero" value="Hombre" #genero="ngModel" [(ngModel)]="user.genero" required> Hombre<br>
+        <input type="radio" name="genero" value="Mujer" #genero="ngModel" [(ngModel)]="user.genero"> Mujer<br>
+        <input type="radio" name="genero" value="No especificar" #genero="ngModel" [(ngModel)]="user.genero"> No especificar
+        <div *ngIf="!genero.valid && genero.touched">
+          <div *ngIf="genero.errors?.required"><small style="color: brown;">*No ha seleccionado ningún valor</small></div>
+        </div>
       </div>
       <div class="clearfix"></div>
       <input type="submit" value="Enviar" class="btn btn-success">
