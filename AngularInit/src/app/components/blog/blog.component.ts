@@ -15,6 +15,14 @@ export class BlogComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.articleService.getArticles().subscribe(
+      response => {
+        console.log(response);
+      },
+      error => {
+        console.log(error);
+      }
+    );
   }
 
 }
