@@ -18,6 +18,7 @@ import { Pagina2Component } from './components/pagina2/pagina2.component';
 import { ErrorComponent } from './components/error/error.component';
 import { FrutaComponent } from './components/fruta/fruta.component';
 import { ArticlesComponent } from './components/articles/articles.component';
+import { ArticleComponent } from './components/article/article.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { ArticlesComponent } from './components/articles/articles.component';
     Pagina2Component,
     ErrorComponent,
     FrutaComponent,
-    ArticlesComponent
+    ArticlesComponent,
+    ArticleComponent
   ],
   imports: [
     BrowserModule,
