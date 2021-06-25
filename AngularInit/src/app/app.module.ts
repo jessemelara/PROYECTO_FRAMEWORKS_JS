@@ -19,6 +19,7 @@ import { ErrorComponent } from './components/error/error.component';
 import { FrutaComponent } from './components/fruta/fruta.component';
 import { ArticlesComponent } from './components/articles/articles.component';
 import { ArticleComponent } from './components/article/article.component';
+import { SearchComponent } from './components/search/search.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { ArticleComponent } from './components/article/article.component';
     ErrorComponent,
     FrutaComponent,
     ArticlesComponent,
-    ArticleComponent
+    ArticleComponent,
+    SearchComponent
   ],
   imports: [
     BrowserModule,

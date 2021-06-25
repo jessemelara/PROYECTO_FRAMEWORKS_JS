@@ -1,7 +1,13 @@
 <div *ngIf="!articles">
     <img class="animate__animated animate__rotateOut animate__slower animate__infinite" src="assets/images/loading.svg" alt="Cargando articulos" height="160px" width="160px">
-    <br><strong style="font-size: 25px;">Preparando artículos...</strong>
+    <br><span style="font-size: 25px;">Preparando artículos...</span>
 </div>
+
+<div *ngIf="articles && articles.length==0">
+    <img class="animate__animated animate__headShake" src="assets/images/clouderror.svg" alt="Cargando articulos" height="120px" width="170px">
+    <br><span style="font-size: 25px;">No se encontraron resultados para mostrar</span>
+</div>
+
 <div id="articles" *ngIf="articles">
     <article class="article-item" *ngFor="let article of articles">
         <div class="image-wrap">

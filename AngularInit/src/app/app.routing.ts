@@ -10,6 +10,7 @@ import { Pagina1Component } from "./components/pagina1/pagina1.component";
 import { Pagina2Component } from "./components/pagina2/pagina2.component";
 import { ErrorComponent } from "./components/error/error.component";
 import { ArticleComponent } from "./components/article/article.component";
+import { SearchComponent } from "./components/search/search.component";
 
 //Array de rutas
 const appRoutes: Routes = [
@@ -17,6 +18,7 @@ const appRoutes: Routes = [
     {path: 'home', component: HomeComponent},
     {path: 'blog', component: BlogComponent},
     {path: 'blog/article/:id', component: ArticleComponent},
+    {path: 'search/:search', component: SearchComponent},
     {path: 'formulario', component: FormularioComponent},
     {path: 'pagina1', component: Pagina1Component},
     {path: 'pagina1/:nombre/:apellidos', component: Pagina1Component},
