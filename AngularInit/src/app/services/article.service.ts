@@ -9,6 +9,7 @@ import { Global } from "./global";
 })
 export class ArticleService{
     public url!: string;
+    public articles:any;
 
     constructor(
         private _http: HttpClient
@@ -16,7 +17,13 @@ export class ArticleService{
         this.url = Global.url;
     }
 
-    getArticles():Observable<any>{
-        return this._http.get(this.url+'articles');
+    getArticles(last:any = null):Observable<any>{
+        if(last!=null){
+            this.articles = 'articles/true';
+        }else{
+            this.articles = 'articles';
+        }
+
+        return this._http.get(this.url+this.articles);
     }
 }
