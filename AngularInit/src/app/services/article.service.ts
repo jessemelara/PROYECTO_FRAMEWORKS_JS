@@ -26,4 +26,8 @@ export class ArticleService{
 
         return this._http.get(this.url+this.articles);
     }
+
+    getArticle(articleId:any):Observable<any>{
+        return this._http.get(this.url+'article/'+articleId)
+    }
 }

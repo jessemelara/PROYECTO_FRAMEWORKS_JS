@@ -9,12 +9,14 @@ import { FormularioComponent } from "./components/formulario/formulario.componen
 import { Pagina1Component } from "./components/pagina1/pagina1.component";
 import { Pagina2Component } from "./components/pagina2/pagina2.component";
 import { ErrorComponent } from "./components/error/error.component";
+import { ArticleComponent } from "./components/article/article.component";
 
 //Array de rutas
 const appRoutes: Routes = [
     {path: '', component: HomeComponent},
     {path: 'home', component: HomeComponent},
     {path: 'blog', component: BlogComponent},
+    {path: 'blog/article/:id', component: ArticleComponent},
     {path: 'formulario', component: FormularioComponent},
     {path: 'pagina1', component: Pagina1Component},
     {path: 'pagina1/:nombre/:apellidos', component: Pagina1Component},

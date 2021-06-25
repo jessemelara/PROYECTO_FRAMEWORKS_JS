@@ -12,6 +12,8 @@
         <span class="date">
             Actualizado: {{article.date | amLocale: 'es' | amTimeAgo}}
         </span>
-        <a href="article.html">Leer más</a>
+        <a [routerLink]="['/blog/article', article._id]">Leer más</a>
+
+        <div class="clearfix"></div>
     </article>
 </div>
