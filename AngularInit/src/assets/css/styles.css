@@ -195,13 +195,20 @@ body {
     margin-top: 10px;
 }
 
+.sidebar-item .btn:hover {
+    opacity: 0.9;
+    transition: all 300ms;
+    text-decoration: underline;
+}
+
 .btn {
     display: inline-block;
     background: black;
-    color: white;
+    color: white !important;
     padding: 15px;
     font-weight: bold;
     text-transform: uppercase;
+    text-align: center;
     font-size: 15px;
     max-width: 125px;
     transition: 300ms all;
@@ -214,9 +221,32 @@ body {
     text-decoration: none;
 }
 
-.btn-success:hover {
+.btn-danger {
+    background: #c5510d;
+    text-decoration: none;
+}
+
+.btn-warning {
+    background: #a10116;
+    text-decoration: none;
+}
+
+.btn-success:hover{
     background: black;
+    opacity: 0.9;
+    transition: all 300ms;
     text-decoration: underline;
+}
+
+.btn-danger:hover,
+.btn-warning:hover {
+    opacity: 0.9;
+    transition: all 300ms;
+    text-decoration: underline;
+}
+
+.buttons{
+    margin-top: 30px;
 }
 
 input[type="text"], textarea{
