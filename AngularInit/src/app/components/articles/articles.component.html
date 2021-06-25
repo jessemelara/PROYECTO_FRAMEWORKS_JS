@@ -1,4 +1,8 @@
-<div id="articles">
+<div *ngIf="!articles">
+    <img class="animate__animated animate__rotateOut animate__slower animate__infinite" src="assets/images/loading.svg" alt="Cargando articulos" height="160px" width="160px">
+    <br><strong style="font-size: 25px;">Preparando artículos...</strong>
+</div>
+<div id="articles" *ngIf="articles">
     <article class="article-item" *ngFor="let article of articles">
         <div class="image-wrap">
             <img src="{{url + 'get-image/' + article.image}}" alt="{{article.title}}" *ngIf="article.image">
