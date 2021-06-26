@@ -3,6 +3,7 @@ import { Router, ActivatedRoute, Params } from '@angular/router';
 import { Article } from 'src/app/models/article';
 import { ArticleService } from 'src/app/services/article.service';
 import { Global } from 'src/app/services/global';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-article-create',
@@ -62,10 +63,28 @@ export class ArticleCreateComponent implements OnInit {
       this.articleService.createArticle(this.article).subscribe(
         response => {
           if (response.status == 'success') {
-            this.status = 'success';
-            this.article = response.article;
-            console.log(response);
-            this._router.navigate(['/blog']);
+            //Alerta
+            Swal.fire({
+              title: '¿Desea guardar el nuevo artículo creado?',
+              showDenyButton: true,
+              showCancelButton: true,
+              cancelButtonText: `Cancelar`,
+              confirmButtonText: `Guardar`,
+              denyButtonText: `No Guardar`,
+            }).then((result) => {
+              /* Read more about isConfirmed, isDenied below */
+              if (result.isConfirmed) {
+                Swal.fire('Artículo creado satisfactoriamente', '', 'success');
+                this.status = 'success';
+                this.article = response.article;
+                console.log(response);
+                this._router.navigate(['/blog']);
+              } else if (result.isDenied) {
+                Swal.fire('El artículo aún no ha sido creado', '', 'error');
+                this.status = 'error';
+                this._router.navigate(['/blog/create']);
+              }
+            });
           } else {
             this.status = 'error';
           }
