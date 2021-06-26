@@ -231,6 +231,11 @@ body {
     text-decoration: none;
 }
 
+.btn-primary {
+    background: #940168;
+    text-decoration: none;
+}
+
 .btn-success:hover{
     background: black;
     opacity: 0.9;
@@ -239,7 +244,8 @@ body {
 }
 
 .btn-danger:hover,
-.btn-warning:hover {
+.btn-warning:hover,
+.btn-primary:hover {
     opacity: 0.9;
     transition: all 300ms;
     text-decoration: underline;
@@ -247,6 +253,15 @@ body {
 
 .buttons{
     margin-top: 30px;
+}
+
+.btn.up_btn.afu-attach-pin{
+    display: block;
+    width: 100%;
+    max-width: 90%;
+    color: black !important;
+    margin-top: 15px;
+    margin-bottom: 15px;
 }
 
 input[type="text"], textarea{
