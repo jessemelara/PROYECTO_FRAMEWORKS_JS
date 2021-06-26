@@ -5,12 +5,12 @@ import { ArticleService } from 'src/app/services/article.service';
 import { Global } from 'src/app/services/global';
 
 @Component({
-  selector: 'app-article-create',
-  templateUrl: './article-create.component.html',
-  styleUrls: ['./article-create.component.css'],
+  selector: 'app-article-edit',
+  templateUrl: '../article-create/article-create.component.html',
+  styleUrls: ['./article-edit.component.css'],
   providers: [ArticleService]
 })
-export class ArticleCreateComponent implements OnInit {
+export class ArticleEditComponent implements OnInit {
   public pageTitle!: string;
   public article!: Article;
   public status!: string;
@@ -46,26 +46,27 @@ export class ArticleCreateComponent implements OnInit {
     private _router: Router,
     private _route: ActivatedRoute
   ) {
-    this.pageTitle = "Crear artículo";
+    this.pageTitle = "Editar artículo";
     this.article = new Article('', '', '', '', null);
-    this.is_edit = false;
+    this.is_edit = true;
     this.url = Global.url;
   }
 
   ngOnInit(): void {
+    this.getArticle();
   }
 
   onArticle(articleForm: any) {
     if (articleForm.form.valid) {
       console.log(this.article);
 
-      this.articleService.createArticle(this.article).subscribe(
+      this.articleService.update(this.article._id, this.article).subscribe(
         response => {
           if (response.status == 'success') {
             this.status = 'success';
             this.article = response.article;
             console.log(response);
-            this._router.navigate(['/blog']);
+            this._router.navigate(['/blog/article', this.article._id]);
           } else {
             this.status = 'error';
           }
@@ -86,4 +87,24 @@ export class ArticleCreateComponent implements OnInit {
     console.log(this.article.image);
   }
 
+  getArticle(){
+    this._route.params.subscribe(params => {
+      let id = params['id'];
+
+      this.articleService.getArticle(id).subscribe(
+        response => {
+          if(response.article){
+            this.article = response.article;
+          }else {
+            this._router.navigate(['/home']);
+          };
+          console.log(response);
+        },
+        error => {
+          console.log(error);
+          this._router.navigate(['/home']);
+        }
+      );
+    });
+  }
 }

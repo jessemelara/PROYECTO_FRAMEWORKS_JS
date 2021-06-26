@@ -22,6 +22,7 @@ import { ArticlesComponent } from './components/articles/articles.component';
 import { ArticleComponent } from './components/article/article.component';
 import { SearchComponent } from './components/search/search.component';
 import { ArticleCreateComponent } from './components/article-create/article-create.component';
+import { ArticleEditComponent } from './components/article-edit/article-edit.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import { ArticleCreateComponent } from './components/article-create/article-crea
     ArticlesComponent,
     ArticleComponent,
     SearchComponent,
-    ArticleCreateComponent
+    ArticleCreateComponent,
+    ArticleEditComponent
   ],
   imports: [
     BrowserModule,
