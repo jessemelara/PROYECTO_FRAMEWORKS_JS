@@ -10,8 +10,8 @@ export class SidebarComponent implements OnInit {
   public searchString!: string;
 
   constructor(
-    private _router: Router,
-    private _route: ActivatedRoute
+    private _route: ActivatedRoute,
+    private _router: Router
   ) { }
 
   ngOnInit(): void {

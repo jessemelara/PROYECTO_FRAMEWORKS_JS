@@ -10,7 +10,7 @@ import { ArticleService } from 'src/app/services/article.service';
   providers: [ArticleService]
 })
 export class SearchComponent implements OnInit {
-  public searchText:string = "Búsqueda";
+  searchText = "Búsqueda";
   public articles!: Article[];
 
   constructor(
