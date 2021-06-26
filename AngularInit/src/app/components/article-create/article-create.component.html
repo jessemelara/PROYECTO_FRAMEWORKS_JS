@@ -2,23 +2,21 @@
 	<section id="content">
 		<h1 class="subheader">Crear artículo</h1>
 
-		<form class="mid-form" #articleForm="ngForm" (ngSubmit)="createArticle()">
+		<form class="mid-form" #articleForm="ngForm" (ngSubmit)="createArticle(articleForm)">
 			<div class="form-group">
 				<label for="title">Título</label>
-				<input type="text" name="title" #title="ngModel" [(ngModel)]="article.title" required>
-				<div *ngIf="!title.valid && (title.dirty || title.touched)"><small style="color: brown;">*El título no es
-						válido</small></div>
+				<input type="text" #title="ngModel" [(ngModel)]="article.title" name="title" required>
+				<div *ngIf="!title.valid && (title.dirty || title.touched)"><small style="color: brown;">*El título no es válido</small></div>
 			</div>
 
 			<div class="form-group">
 				<label for="content">Contenido</label>
-				<textarea name="content" #content="ngModel" [(ngModel)]="article.content" required></textarea>
-				<div *ngIf="!content.valid && (content.dirty || content.touched)"><small style="color: brown;">*El contenido
-						no es válido</small></div>
+				<textarea #content="ngModel" [(ngModel)]="article.content" name="content" required></textarea>
+				<div *ngIf="!content.valid && (content.dirty || content.touched)"><small style="color: brown;">*El contenido no es válido</small></div>
 			</div>
 
 			<div class="form-group">
-				<angular-file-uploader [config]="afuConfig">
+				<angular-file-uploader [config]="afuConfig" (ApiResponse)="imageUpload($event)">
 				</angular-file-uploader>
 			</div>
 

@@ -17,10 +17,9 @@ export class ArticleCreateComponent implements OnInit {
   afuConfig = {
     multiple: false,
     formatsAllowed: ".jpg, .png, .gif, .jpeg",
-    maxSize: 50,
+    maxSize: 100,
     uploadAPI: {
-      url: Global.url+'upload-image/',
-      responseType: 'blob',
+      url: Global.url + 'upload-image'
     },
     theme: "attachPin",
     hideProgressBar: false,
@@ -50,25 +49,35 @@ export class ArticleCreateComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  createArticle() {
-    console.log(this.article);
+  createArticle(articleForm: any) {
+    if (articleForm.form.valid) {
+      console.log(this.article);
 
-    this.articleService.createArticle(this.article).subscribe(
-      response => {
-        if (response.status == 'success') {
-          this.status = 'success';
-          this.article = response.article;
-          console.log(response);
-          this._router.navigate(['/blog']);
-        } else {
-          this.status = 'error';
+      this.articleService.createArticle(this.article).subscribe(
+        response => {
+          if (response.status == 'success') {
+            this.status = 'success';
+            this.article = response.article;
+            console.log(response);
+            this._router.navigate(['/blog']);
+          } else {
+            this.status = 'error';
+          }
+        },
+        error => {
+          console.log(error);
+          this.status = 'error'
         }
-      },
-      error => {
-        console.log(error);
-        this.status = 'error'
-      }
-    )
+      )
+    }else{
+      articleForm.form.markAllAsTouched();
+    }
+
+  }
+
+  imageUpload(data:any) {
+    this.article.image = data.body.image;
+    console.log(this.article.image);
   }
 
 }

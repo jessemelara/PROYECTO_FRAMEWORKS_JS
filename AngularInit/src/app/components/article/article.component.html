@@ -2,7 +2,7 @@
     <section id="content">
         
         <div id="articles">
-            <article class="article-item article-detail">
+            <article class="article-item article-detail" *ngIf="article">
                 <h1 class="subheader">{{article.title}}</h1>
                 <span class="date">
                     Actualizado: {{article.date | amLocale: 'es' | amTimeAgo}}

@@ -27,7 +27,7 @@ router.get('/articles/:last?', _article["default"].getArticles);
 router.get('/article/:id', _article["default"].getArticle);
 router.put('/article/:id', _article["default"].update);
 router["delete"]('/article/:id', _article["default"]["delete"]);
-router.post('/upload-image/:id', md_upload, _article["default"].upload);
+router.post('/upload-image/:id?', md_upload, _article["default"].upload);
 router.get('/get-image/:image', _article["default"].getImage);
 router.get('/search/:search', _article["default"].search);
 var _default = router;
