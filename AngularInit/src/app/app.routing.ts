@@ -11,6 +11,7 @@ import { Pagina2Component } from "./components/pagina2/pagina2.component";
 import { ErrorComponent } from "./components/error/error.component";
 import { ArticleComponent } from "./components/article/article.component";
 import { SearchComponent } from "./components/search/search.component";
+import { ArticleCreateComponent } from "./components/article-create/article-create.component";
 
 //Array de rutas
 const appRoutes: Routes = [
@@ -18,6 +19,7 @@ const appRoutes: Routes = [
     {path: 'home', component: HomeComponent},
     {path: 'blog', component: BlogComponent},
     {path: 'blog/article/:id', component: ArticleComponent},
+    {path: 'blog/create', component: ArticleCreateComponent},
     {path: 'search/:search', component: SearchComponent},
     {path: 'formulario', component: FormularioComponent},
     {path: 'pagina1', component: Pagina1Component},

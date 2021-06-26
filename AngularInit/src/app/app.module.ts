@@ -20,6 +20,7 @@ import { FrutaComponent } from './components/fruta/fruta.component';
 import { ArticlesComponent } from './components/articles/articles.component';
 import { ArticleComponent } from './components/article/article.component';
 import { SearchComponent } from './components/search/search.component';
+import { ArticleCreateComponent } from './components/article-create/article-create.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { SearchComponent } from './components/search/search.component';
     FrutaComponent,
     ArticlesComponent,
     ArticleComponent,
-    SearchComponent
+    SearchComponent,
+    ArticleCreateComponent
   ],
   imports: [
     BrowserModule,
