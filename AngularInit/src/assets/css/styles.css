@@ -236,6 +236,11 @@ body {
     text-decoration: none;
 }
 
+.btn-accept {
+    background: #06be00;
+    text-decoration: none;
+}
+
 .btn-success:hover{
     background: black;
     opacity: 0.9;
@@ -245,7 +250,8 @@ body {
 
 .btn-danger:hover,
 .btn-warning:hover,
-.btn-primary:hover {
+.btn-primary:hover,
+.btn-accept:hover {
     opacity: 0.9;
     transition: all 300ms;
     text-decoration: underline;

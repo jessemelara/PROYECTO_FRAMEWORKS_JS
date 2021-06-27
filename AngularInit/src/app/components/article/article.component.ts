@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
+import Swal from 'sweetalert2';
 import { Article } from 'src/app/models/article';
 import { ArticleService } from 'src/app/services/article.service';
 import { Global } from 'src/app/services/global';
@@ -44,15 +45,50 @@ export class ArticleComponent implements OnInit {
   }
 
   delete(id:string){
-    this.articleService.delete(id).subscribe(
-      response => {
-        this._router.navigate(['/blog']);
+    //Alerta
+    const swalWithBootstrapButtons = Swal.mixin({
+      customClass: {
+        confirmButton: 'btn btn-accept',
+        cancelButton: 'btn btn-warning'
       },
-      error => {
-        console.log(error);
-        this._router.navigate(['/blog']);
+      buttonsStyling: false
+    })
+    
+    swalWithBootstrapButtons.fire({
+      title: '¿Estás seguro que quieres eliminar este artículo?',
+      text: "¡No podrás revertir esta acción!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: '¡Sí, elimínalo!',
+      cancelButtonText: '¡No, cancelar!',
+      reverseButtons: true
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.articleService.delete(id).subscribe(
+          response => {
+            this._router.navigate(['/blog']);
+            swalWithBootstrapButtons.fire(
+              '¡Eliminado!',
+              'El artículo ha sido eliminado.',
+              'success'
+            );
+          },
+          error => {
+            this._router.navigate(['/blog']);
+            console.log(error);
+          }
+        );
+      } else if (
+        result.dismiss === Swal.DismissReason.cancel
+      ) {
+        this._router.navigate(['/blog/article', this.article._id]);
+        swalWithBootstrapButtons.fire(
+          'Acción cancelada',
+          '¡El artículo está a salvo!',
+          'info'
+        );
       }
-    );
+    });
   }
 
 }

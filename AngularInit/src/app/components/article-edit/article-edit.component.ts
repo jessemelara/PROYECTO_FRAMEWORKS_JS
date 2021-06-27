@@ -60,40 +60,38 @@ export class ArticleEditComponent implements OnInit {
   onArticle(articleForm: any) {
     if (articleForm.form.valid) {
       console.log(this.article);
-
-      this.articleService.update(this.article._id, this.article).subscribe(
-        response => {
-          if (response.status == 'success') {
-            //Alerta
-            Swal.fire({
-              title: '¿Desea guardar los cambios realizados?',
-              showDenyButton: true,
-              showCancelButton: true,
-              cancelButtonText: 'Cancelar',
-              confirmButtonText: `Guardar`,
-              denyButtonText: `No Guardar`,
-            }).then((result) => {
-              if (result.isConfirmed) {
-                Swal.fire('Los cambios se han realizado satisfactoriamente', '', 'success');
+      //Alerta
+      Swal.fire({
+        title: '¿Desea guardar los cambios realizados?',
+        showDenyButton: true,
+        showCancelButton: true,
+        cancelButtonText: 'Cancelar',
+        confirmButtonText: `Guardar`,
+        denyButtonText: `No Guardar`,
+      }).then((result) => {
+        if (result.isConfirmed) {
+          this.articleService.update(this.article._id, this.article).subscribe(
+            response => {
+              if (response.status == 'success') {
                 this.status = 'success';
                 this.article = response.article;
                 console.log(response);
                 this._router.navigate(['/blog/article', this.article._id]);
-              } else if (result.isDenied) {
-                Swal.fire('Los cambios en el artículo aún no han sido guardados', '', 'info');
+                Swal.fire('Los cambios se han realizado satisfactoriamente', '', 'success');
+              } else {
                 this.status = 'error';
-                this._router.navigate(['/blog/edit', this.article._id]);
               }
-            });
-          } else {
-            this.status = 'error';
-          }
-        },
-        error => {
-          console.log(error);
-          this.status = 'error'
+            },
+            error => {
+              console.log(error);
+              this.status = 'error'
+            }
+          )
+        } else if (result.isDenied) {
+          this._router.navigate(['/blog/edit', this.article._id]);
+          Swal.fire('Los cambios en el artículo aún no han sido guardados', '', 'info');
         }
-      )
+      });
     }else{
       articleForm.form.markAllAsTouched();
     }
