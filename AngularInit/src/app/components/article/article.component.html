@@ -1,0 +1,39 @@
+<div class="center">
+    <section id="content">
+        
+        <div id="articles">
+            <article class="article-item article-detail" *ngIf="article">
+                <h1 class="subheader">{{article.title}}</h1>
+                <span class="date">
+                    Actualizado: {{article.date | amLocale: 'es' | amTimeAgo}}
+                </span>
+                <div class="image-wrap">
+                    <img src="{{url + 'get-image/' + article.image}}" alt="{{article.title}}" *ngIf="article.image">
+                    <img src="assets/images/default-color.png" alt="{{article.title}}" *ngIf="!article.image">
+                </div>
+                <p>{{article.content}}</p>
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iure illo, vitae quod possimus, facilis voluptates voluptatum aut non qui iste quia temporibus dolore accusamus odio libero magni fugiat. Hic, a.
+                </p>
+                <p>
+                    Suscipit architecto, velit explicabo nihil asperiores accusantium repellendus cumque maiores! Suscipit a error, sapiente voluptas sit asperiores repellendus aspernatur, autem, temporibus minima nemo maxime fugiat rerum fuga. Voluptatibus, laudantium beatae! Velit cumque culpa dolorem possimus explicabo a reprehenderit, assumenda quo eaque repudiandae, eos omnis autem suscipit, totam tempora!
+                </p>
+                <p>
+                    Dolorum reprehenderit quo dolores maxime architecto exercitationem sequi voluptatem inventore nulla quis? Adipisci quod placeat molestias excepturi quaerat corrupti nulla reprehenderit possimus sit, quasi repudiandae delectus iste quidem vero quisquam, laudantium officia nemo! Consequuntur fugit aut cumque quod saepe debitis, perspiciatis quam!
+                </p>
+                <p>
+                    Aliquam nulla illum fugiat repellendus non blanditiis ipsa necessitatibus aut voluptatum aperiam libero, quis accusamus. Quas rem, dolores, minima doloremque nobis blanditiis quam sequi laudantium iste iure, consequuntur cum?
+                </p>
+
+                <div class="buttons">
+                    <a [routerLink]="['/blog/edit', article._id]" class="btn btn-danger">Editar</a>
+                    <a (click)="delete(article._id)" class="btn btn-warning">Eliminar</a>
+                </div>
+
+                <div class="clearfix"></div>
+            </article>
+        </div>
+
+    </section>
+    <app-sidebar></app-sidebar>
+</div>

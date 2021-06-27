@@ -47,7 +47,13 @@ var controller = {
 
       article.title = params.title;
       article.content = params.content;
-      article.image = null; //Guardar el articulo
+
+      if (params.image) {
+        article.image = params.image;
+      } else {
+        article.image = null;
+      } //Guardar el articulo
+
 
       article.save(function (err, articleStored) {
         if (err || !articleStored) {
@@ -236,27 +242,35 @@ var controller = {
       });
     } else {
       //Si todo es valido
-      var articleId = req.params.id; //Buscar el articulo, asignarle el nombre de la imagen y actualizarlo
+      var articleId = req.params.id;
 
-      Article.findOneAndUpdate({
-        _id: articleId
-      }, {
-        image: file_name
-      }, {
-        "new": true
-      }, function (err, articleUpdated) {
-        if (err || !articleUpdated) {
+      if (articleId) {
+        //Buscar el articulo, asignarle el nombre de la imagen y actualizarlo
+        Article.findOneAndUpdate({
+          _id: articleId
+        }, {
+          image: file_name
+        }, {
+          "new": true
+        }, function (err, articleUpdated) {
+          if (err || !articleUpdated) {
+            return res.status(200).send({
+              status: 'error',
+              message: 'Error al guardar la imagen del articulo'
+            });
+          }
+
           return res.status(200).send({
-            status: 'error',
-            message: 'Error al guardar la imagen del articulo'
+            status: 'success',
+            article: articleUpdated
           });
-        }
-
+        });
+      } else {
         return res.status(200).send({
           status: 'success',
-          article: articleUpdated
+          image: file_name
         });
-      });
+      }
     }
   },
   getImage: function getImage(req, res) {

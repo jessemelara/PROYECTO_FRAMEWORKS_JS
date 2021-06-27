@@ -1,0 +1,22 @@
+<app-slider [title]="pg1Text" [size]="'small'"></app-slider>
+
+<div class="center">
+  <section id="content">
+    <h1 class="subheader">Página 1</h1>
+    <div *ngIf="nombre && apellidos; then Params else noParams"></div>
+
+    <ng-template #Params>
+        <h3>Su nombre es: {{nombre}} {{apellidos}}</h3>
+    </ng-template>
+
+    <ng-template #noParams>
+        <h3>No hay parámetros que mostrar</h3>
+    </ng-template>
+
+    <div>
+        <button class="btn" (click)="redireccion()">Nombre y apellidos</button>
+    </div>
+  </section>
+  
+  <app-sidebar></app-sidebar>
+</div>
