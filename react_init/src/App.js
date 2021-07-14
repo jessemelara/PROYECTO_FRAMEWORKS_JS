@@ -5,6 +5,7 @@ import "./assets/css/App.css";
 import Header from "./components/Header";
 import Slider from "./components/Slider";
 import Sidebar from "./components/Sidebar";
+import Footer from "./components/Footer";
 
 function App() {
   return (
@@ -16,7 +17,7 @@ function App() {
         <section></section>
         <Sidebar />
       </div>
-
+      <Footer />
       <header className="App-header"></header>
     </div>
   );
