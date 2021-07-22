@@ -35,6 +35,14 @@ body {
   margin-top: 35px;
 }
 
+#logo a {
+  color: black;
+}
+
+#logo a:hover {
+  color: #0074c2fb;
+}
+
 #logo img {
   display: block;
   float: left;
