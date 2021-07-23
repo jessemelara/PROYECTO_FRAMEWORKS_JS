@@ -293,14 +293,14 @@ textarea {
 
 .article-item a {
   display: block;
-  color: #444;
+  color: #444 !important;
   text-decoration: none;
   margin-top: 10px;
 }
 
 .article-item a:hover {
   text-decoration: underline;
-  color: #017494;
+  color: #017494 !important;
 }
 
 .subheader {
