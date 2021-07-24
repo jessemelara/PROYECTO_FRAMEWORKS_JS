@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 import axios from "axios";
 import Moment from "react-moment";
 import "moment/locale/es";
@@ -34,7 +35,7 @@ export default class Articles extends Component {
     if (this.state.articles.length >= 1) {
       let showArticles = this.state.articles.map((article) => {
         return (
-          <article className="article-item">
+          <article className="article-item" key={article._id}>
             <div className="image-wrap">
               {article.image !== null ? (
                 <img
@@ -45,15 +46,14 @@ export default class Articles extends Component {
                 <img src={defaultImage} alt={article.title} />
               )}
             </div>
-            <h2 className="subheader" key={article._id}>
-              {article.title}
-            </h2>
+            <h2 className="subheader">{article.title}</h2>
             <span className="date">
               Actualizado:{" "}
               <Moment locale="es" fromNow>
                 {article.date}
               </Moment>
             </span>
+            <Link to={"/blog/article/" + article._id}>Leer más</Link>
 
             <div className="clearfix"></div>
           </article>

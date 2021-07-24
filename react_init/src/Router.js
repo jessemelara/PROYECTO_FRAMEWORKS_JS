@@ -9,6 +9,7 @@ import Blog from "./components/Blog";
 import Formulario from "./components/Formulario";
 import Pagina1 from "./components/Pagina1";
 import Pagina2 from "./components/Pagina2";
+import Article from "./components/Article";
 import Error from "./components/Error";
 
 class Router extends Component {
@@ -21,7 +22,8 @@ class Router extends Component {
         <Switch>
           <Route exact path="/" component={Home} />
           <Route path="/home" component={Home} />
-          <Route path="/blog" component={Blog} />
+          <Route exact path="/blog" component={Blog} />
+          <Route path="/blog/article/:id" component={Article} />
           <Route path="/formulario" component={Formulario} />
           <Route path="/pagina1/:nombre?/:apellidos?" component={Pagina1} />
           <Route path="/pagina2" component={Pagina2} />
