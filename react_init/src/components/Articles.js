@@ -15,11 +15,30 @@ export default class Articles extends Component {
   };
 
   componentDidMount() {
-    this.getArticle();
+    let home = this.props.home;
+
+    if (home) {
+      this.lastArticle();
+    } else {
+      this.getArticle();
+    }
   }
 
   getArticle = () => {
     axios.get(this.url + "articles").then((res) => {
+      console.log(res.data);
+
+      this.setState({
+        articles: res.data.articles,
+        status: "success",
+      });
+
+      console.log(this.state);
+    });
+  };
+
+  lastArticle = () => {
+    axios.get(this.url + "articles/last").then((res) => {
       console.log(res.data);
 
       this.setState({
