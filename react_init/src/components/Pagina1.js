@@ -1,8 +1,11 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 import Slider from "./Slider";
 import Sidebar from "./Sidebar";
 
 class Pagina1 extends Component {
+  urlParams = () => {};
+
   render() {
     var nombre = this.props.match.params.nombre;
     var apellidos = this.props.match.params.apellidos;
@@ -28,6 +31,11 @@ class Pagina1 extends Component {
                 <span>{"No hay parámetros que mostrar"}</span>
               )}
             </h3>
+            <div>
+              <Link to="/pagina1/Jesse/Melara" className="btn">
+                Nombre y apellidos
+              </Link>
+            </div>
           </section>
 
           <Sidebar />

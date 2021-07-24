@@ -20,7 +20,7 @@ class Sidebar extends Component {
           </div>
         </aside>
 
-        <div class="clearfix"></div>
+        <div className="clearfix"></div>
       </React.Fragment>
     );
   }
