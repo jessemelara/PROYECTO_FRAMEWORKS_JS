@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
+import Moment from "react-moment";
+import "moment/locale/es";
 import Global from "../Global";
 import defaultImage from "../assets/images/default-image.svg";
 
@@ -46,7 +48,12 @@ export default class Articles extends Component {
             <h2 className="subheader" key={article._id}>
               {article.title}
             </h2>
-            <span className="date">Actualizado: </span>
+            <span className="date">
+              Actualizado:{" "}
+              <Moment locale="es" fromNow>
+                {article.date}
+              </Moment>
+            </span>
 
             <div className="clearfix"></div>
           </article>
