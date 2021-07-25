@@ -24,7 +24,7 @@ class Pagina2 extends Component {
       {
         title: "AVATAR",
         image:
-          "https://lh3.googleusercontent.com/proxy/Qj1ZTRoRvESwsWtlGy4rUbgjt6MIlXAJO96w9VTcQTTEdlZXDggIDOQLSn5cpFJljWgWb30rup9UalsS_EEMN2Nds5eH-bWjCzKkJKBYATuocz3ywQ",
+          "https://image.slidesharecdn.com/presentation-avatarfilmposteranalysis-150303060114-conversion-gate01/95/avatar-film-poster-analysis-1-638.jpg?cb=1425363082",
       },
     ],
     name: "Jessé Melara",

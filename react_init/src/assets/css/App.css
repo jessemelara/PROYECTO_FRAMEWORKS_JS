@@ -220,9 +220,47 @@ body {
   text-decoration: none;
 }
 
+.btn-danger {
+  background: #c5510d;
+  text-decoration: none;
+  margin-right: 15px;
+}
+
+.btn-warning {
+  background: #a10116;
+  text-decoration: none;
+  margin-right: 15px;
+}
+
+.btn-primary {
+  background: #940168;
+  text-decoration: none;
+}
+
+.btn-accept {
+  background: #06be00;
+  text-decoration: none;
+}
+
 .btn-success:hover {
   background: black;
+  opacity: 0.9;
+  transition: all 300ms;
   text-decoration: underline;
+}
+
+.btn-danger:hover,
+.btn-warning:hover,
+.btn-primary:hover,
+.btn-accept:hover {
+  opacity: 0.9;
+  transition: all 300ms;
+  text-decoration: underline;
+}
+
+.buttons {
+  margin-top: 15px;
+  margin-bottom: 15px;
 }
 
 input[type="text"],
