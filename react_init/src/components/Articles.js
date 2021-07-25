@@ -16,9 +16,12 @@ export default class Articles extends Component {
 
   componentDidMount() {
     let home = this.props.home;
+    let search = this.props.search;
 
     if (home) {
       this.lastArticle();
+    } else if (search && search !== null && search !== undefined) {
+      this.searchArticle(search);
     } else {
       this.getArticle();
     }
@@ -48,6 +51,28 @@ export default class Articles extends Component {
 
       console.log(this.state);
     });
+  };
+
+  searchArticle = (searchText) => {
+    axios
+      .get(this.url + "search/" + searchText)
+      .then((res) => {
+        console.log(res.data);
+
+        if (res.data.articles) {
+          this.setState({
+            articles: res.data.articles,
+            status: "success",
+          });
+        }
+        console.log(this.state);
+      })
+      .catch((err) => {
+        this.setState({
+          articles: [],
+          status: "success",
+        });
+      });
   };
 
   render() {
