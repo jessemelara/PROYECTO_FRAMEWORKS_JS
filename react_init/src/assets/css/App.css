@@ -264,6 +264,11 @@ body {
   margin-bottom: 15px;
 }
 
+.text-danger {
+  color: #da0037;
+  padding: 10px;
+}
+
 input[type="text"],
 textarea {
   width: 100%;
