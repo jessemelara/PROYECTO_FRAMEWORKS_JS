@@ -238,8 +238,9 @@ body {
 }
 
 .btn-accept {
-  background: #06be00;
+  background: #06b400;
   text-decoration: none;
+  margin-top: 20px;
 }
 
 .btn-success:hover {

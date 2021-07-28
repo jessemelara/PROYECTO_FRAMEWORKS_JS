@@ -12,6 +12,7 @@ import Pagina2 from "./components/Pagina2";
 import Article from "./components/Article";
 import Error from "./components/Error";
 import Search from "./components/Search";
+import ArticleCreate from "./components/ArticleCreate";
 
 class Router extends Component {
   render() {
@@ -25,6 +26,7 @@ class Router extends Component {
           <Route path="/home" component={Home} />
           <Route exact path="/blog" component={Blog} />
           <Route path="/blog/article/:id" component={Article} />
+          <Route path="/blog/create" component={ArticleCreate} />
           <Route path="/blog/search/:search" component={Search} />
           <Route
             path="/searching/:search"
