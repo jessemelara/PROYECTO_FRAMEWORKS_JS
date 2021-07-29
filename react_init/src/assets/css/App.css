@@ -203,7 +203,7 @@ body {
   text-align: center;
   text-decoration: none;
   font-size: 16px;
-  max-width: 125px;
+  min-width: 78px;
   transition: 300ms all;
   border: none;
   cursor: pointer;
@@ -220,27 +220,34 @@ body {
   text-decoration: none;
 }
 
-.btn-danger {
+.btn-warning {
   background: #c5510d;
   text-decoration: none;
-  margin-right: 15px;
+  margin: 10px;
 }
 
-.btn-warning {
+.btn-danger {
   background: #a10116;
   text-decoration: none;
-  margin-right: 15px;
+  margin: 10px;
 }
 
 .btn-primary {
-  background: #940168;
+  background: #1e6f5c;
   text-decoration: none;
+  margin: 10px;
 }
 
 .btn-accept {
   background: #06b400;
   text-decoration: none;
   margin-top: 20px;
+}
+
+.btn-secondary {
+  background: #940168;
+  text-decoration: none;
+  margin: 10px;
 }
 
 .btn-success:hover {
@@ -253,6 +260,7 @@ body {
 .btn-danger:hover,
 .btn-warning:hover,
 .btn-primary:hover,
+.btn-secondary:hover,
 .btn-accept:hover {
   opacity: 0.9;
   transition: all 300ms;

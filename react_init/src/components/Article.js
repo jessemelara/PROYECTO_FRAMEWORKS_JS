@@ -1,8 +1,9 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import axios from "axios";
 import Moment from "react-moment";
 import "moment/locale/es";
+import Swal from "sweetalert2";
 
 import defaultImage from "../assets/images/default-image.svg";
 import Sidebar from "./Sidebar";
@@ -41,9 +42,62 @@ export default class Article extends Component {
       });
   };
 
+  deleteArticle = (id) => {
+    const swalWithBootstrapButtons = Swal.mixin({
+      customClass: {
+        confirmButton: "btn btn-primary",
+        cancelButton: "btn btn-secondary",
+      },
+      buttonsStyling: false,
+    });
+
+    swalWithBootstrapButtons
+      .fire({
+        title: "¿Estás seguro que quieres eliminar este artículo?",
+        text: "¡Esta acción es irreversible!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonText: "Sí, ¡elimínalo!",
+        cancelButtonText: "No, ¡cancelar!",
+        reverseButtons: true,
+      })
+      .then((result) => {
+        if (result.isConfirmed) {
+          axios.delete(this.url + "article/" + id).then((res) => {
+            this.setState({
+              article: res.data.article,
+              status: "deleted",
+            });
+            swalWithBootstrapButtons.fire(
+              "¡Artículo eliminado!",
+              "Este artículo fue eliminado exitosamente",
+              "success"
+            );
+          });
+        } else if (
+          /* Read more about handling dismissals below */
+          result.dismiss === Swal.DismissReason.cancel
+        ) {
+          swalWithBootstrapButtons.fire(
+            "Acción cancelada",
+            "Tranquilo, ¡el artículo está a salvo!",
+            "error"
+          );
+          this.setState({
+            status: "cancelled",
+          });
+          return <Redirect to={"/blog/article/" + id} />;
+        }
+      });
+  };
+
   render() {
     let article = this.state.article;
     let status = this.state.status;
+
+    if (this.state.status === "deleted") {
+      return <Redirect to={"/blog"} />;
+    }
 
     return (
       <div className="center">
@@ -102,12 +156,17 @@ export default class Article extends Component {
                 <div className="clearfix"></div>
               </article>
               <div className="buttons">
-                <Link to="" className="btn btn-danger">
+                <Link to="" className="btn btn-warning">
                   Editar
                 </Link>
-                <Link to="" className="btn btn-warning">
+                <button
+                  onClick={() => {
+                    this.deleteArticle(article._id);
+                  }}
+                  className="btn btn-danger"
+                >
                   Eliminar
-                </Link>
+                </button>
               </div>
               <div className="clearfix"></div>
             </div>
