@@ -156,7 +156,10 @@ export default class Article extends Component {
                 <div className="clearfix"></div>
               </article>
               <div className="buttons">
-                <Link to="" className="btn btn-warning">
+                <Link
+                  to={"/blog/edit/" + article._id}
+                  className="btn btn-warning"
+                >
                   Editar
                 </Link>
                 <button

@@ -13,6 +13,7 @@ import Article from "./components/Article";
 import Error from "./components/Error";
 import Search from "./components/Search";
 import ArticleCreate from "./components/ArticleCreate";
+import ArticleEdit from "./components/ArticleEdit";
 
 class Router extends Component {
   render() {
@@ -27,6 +28,7 @@ class Router extends Component {
           <Route exact path="/blog" component={Blog} />
           <Route path="/blog/article/:id" component={Article} />
           <Route path="/blog/create" component={ArticleCreate} />
+          <Route path="/blog/edit/:id" component={ArticleEdit} />
           <Route path="/blog/search/:search" component={Search} />
           <Route
             path="/searching/:search"
