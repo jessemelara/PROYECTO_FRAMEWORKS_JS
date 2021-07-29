@@ -19,6 +19,15 @@ class Sidebar extends Component {
     }
   };
 
+  searchingButton = (e) => {
+    e.preventDefault();
+
+    this.setState({
+      search: this.searchRef.current.value,
+      redirect: true,
+    });
+  };
+
   render() {
     if (this.state.redirect) {
       return <Redirect to={"/searching/" + this.state.search} />;
@@ -47,7 +56,7 @@ class Sidebar extends Component {
               className="btn"
               type="submit"
               value="Buscar"
-              onClick={this.searchingText}
+              onClick={this.searchingButton}
             />
           </div>
         </aside>
