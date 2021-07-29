@@ -9,12 +9,14 @@ class Sidebar extends Component {
   };
 
   searchingText = (e) => {
-    e.preventDefault();
+    if (e.which === 13) {
+      e.preventDefault();
 
-    this.setState({
-      search: this.searchRef.current.value,
-      redirect: true,
-    });
+      this.setState({
+        search: this.searchRef.current.value,
+        redirect: true,
+      });
+    }
   };
 
   render() {
