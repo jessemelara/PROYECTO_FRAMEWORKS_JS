@@ -15,11 +15,12 @@ export default class ArticleCreate extends Component {
   state = {
     article: [],
     status: null,
+    imageFile: null,
     selectedFile: null,
   };
 
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.validator = new SimpleReactValidator({
       autoForceUpdate: this,
       messages: {
@@ -41,6 +42,7 @@ export default class ArticleCreate extends Component {
   fileUpload = (event) => {
     this.setState({
       selectedFile: event.target.files[0],
+      imageFile: URL.createObjectURL(event.target.files[0]),
     });
     // console.log(this.state.selectedFile);
   };
@@ -188,6 +190,20 @@ export default class ArticleCreate extends Component {
 
             <div className="form-group">
               <label htmlFor="image">Imagen</label>
+              <div className="image-wrap">
+                {/*** Mostrar imagen de nuevo articulo ***/}
+                {this.state.imageFile && (
+                  <img
+                    src={this.state.imageFile}
+                    alt={this.state.article.title}
+                    style={{
+                      width: "250px",
+                      height: "115px",
+                      margin: "10px",
+                    }}
+                  />
+                )}
+              </div>
               <br />
               <input type="file" name="image" onChange={this.fileUpload} />
             </div>
