@@ -93,7 +93,7 @@ class Formulario extends Component {
                 {this.validator.message(
                   "nombre",
                   this.state.user.nombre,
-                  "required|regex:^[a-zA-ZÀ-ÿ\u00f1\u00d1]+(s*[a-zA-ZÀ-ÿ\u00f1\u00d1]*)*[a-zA-ZÀ-ÿ\u00f1\u00d1]+$",
+                  "required|regex:^[a-zA-ZÀ-ÿ\u00f1\u00d1]+(\u0020*[a-zA-ZÀ-ÿ\u00f1\u00d1]*)*[a-zA-ZÀ-ÿ\u00f1\u00d1]+$",
                   { className: "text-danger" }
                 )}
               </div>
@@ -111,7 +111,7 @@ class Formulario extends Component {
                 {this.validator.message(
                   "apellido",
                   this.state.user.apellidos,
-                  "required|regex:^[a-zA-ZÀ-ÿ\u00f1\u00d1]+(s*[a-zA-ZÀ-ÿ\u00f1\u00d1]*)*[a-zA-ZÀ-ÿ\u00f1\u00d1]+$",
+                  "required|regex:^[a-zA-ZÀ-ÿ\u00f1\u00d1]+(\u0020*[a-zA-ZÀ-ÿ\u00f1\u00d1]*)*[a-zA-ZÀ-ÿ\u00f1\u00d1]+$",
                   { className: "text-danger" }
                 )}
               </div>
