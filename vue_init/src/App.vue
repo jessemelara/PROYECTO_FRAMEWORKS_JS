@@ -1,7 +1,13 @@
 <template>
   <Header />
   <Slider />
-  <Sidebar />
+  <div class="center">
+    <section id="content">
+      <h2 class="subheader">Últimos Artículos</h2>
+    </section>
+    <Sidebar />
+    <div class="clearfix"></div>
+  </div>
 </template>
 
 <script>
