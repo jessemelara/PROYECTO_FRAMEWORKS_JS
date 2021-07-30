@@ -3,7 +3,7 @@
   <Slider />
   <div class="center">
     <section id="content">
-      <h2 class="subheader">Últimos Artículos</h2>
+      <router-view></router-view>
     </section>
     <Sidebar />
     <div class="clearfix"></div>
