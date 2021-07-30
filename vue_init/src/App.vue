@@ -1,18 +1,17 @@
 <template>
   <Header />
-  <img alt="Vue logo" src="./assets/images/logo.png">
-  <HelloWorld msg="Bienvenido al Master en Frameworks de JS"/>
+  <Slider />
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
 import Header from './components/Header.vue'
+import Slider from './components/Slider.vue'
 
 export default {
   name: 'App',
   components: {
-    HelloWorld,
-    Header
+    Header,
+    Slider
   }
 }
 </script>
