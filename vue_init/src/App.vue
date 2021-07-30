@@ -8,24 +8,26 @@
     <Sidebar />
     <div class="clearfix"></div>
   </div>
+  <Footer />
 </template>
 
 <script>
-import Header from './components/Header.vue'
-import Slider from './components/Slider.vue'
-import Sidebar from './components/Sidebar.vue'
+import Header from "./components/Header.vue";
+import Slider from "./components/Slider.vue";
+import Sidebar from "./components/Sidebar.vue";
+import Footer from "./components/Footer.vue";
 
 export default {
-  name: 'App',
+  name: "App",
   components: {
     Header,
     Slider,
-    Sidebar
-  }
-}
+    Sidebar,
+    Footer,
+  },
+};
 </script>
 
 <style>
 @import "./assets/css/styles.css";
-
 </style>
