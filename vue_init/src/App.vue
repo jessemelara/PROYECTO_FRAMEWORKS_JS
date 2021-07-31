@@ -1,14 +1,16 @@
 <template>
-  <Header />
-  <Slider />
-  <div class="center">
-    <section id="content">
-      <router-view></router-view>
-    </section>
-    <Sidebar />
-    <div class="clearfix"></div>
+  <div id="app">
+    <Header />
+    <Slider />
+    <div class="center">
+      <section id="content">
+        <router-view></router-view>
+      </section>
+      <Sidebar />
+      <div class="clearfix"></div>
+    </div>
+    <Footer />
   </div>
-  <Footer />
 </template>
 
 <script>
