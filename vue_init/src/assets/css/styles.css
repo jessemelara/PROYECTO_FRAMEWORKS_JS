@@ -218,6 +218,7 @@ body {
 .btnParams {
   display: inline-block;
   align-items: center;
+  padding: 10px;
 }
 
 .btn-success {
@@ -228,6 +229,51 @@ body {
 .btn-success:hover {
   background: black;
   text-decoration: underline;
+}
+
+.btn-warning {
+  background: #c5510d;
+  text-decoration: none;
+  margin: 10px;
+}
+
+.btn-danger {
+  background: #a10116;
+  text-decoration: none;
+  margin: 10px;
+}
+
+.btn-primary {
+  background: #1e6f5c;
+  text-decoration: none;
+  margin: 10px;
+}
+
+.btn-accept {
+  background: #06b400;
+  text-decoration: none;
+  margin-top: 20px;
+}
+
+.btn-secondary {
+  background: #940168;
+  text-decoration: none;
+  margin: 10px;
+}
+
+.btn-danger:hover,
+.btn-warning:hover,
+.btn-primary:hover,
+.btn-secondary:hover,
+.btn-accept:hover {
+  opacity: 0.9;
+  transition: all 300ms;
+  text-decoration: underline;
+}
+
+.buttons {
+  margin-top: 15px;
+  margin-bottom: 15px;
 }
 
 input[type="text"],

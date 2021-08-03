@@ -11,6 +11,10 @@
       >Nombre y apellidos</router-link
     >
   </div>
+  <div class="clearfix"></div>
+  <div class="btnParams">
+    <button @click="notFoundPage()" class="btn btn-danger">Página Error</button>
+  </div>
 </template>
 
 <script>
@@ -29,6 +33,14 @@ export default {
       nombre: null,
       apellido: null,
     };
+  },
+  methods: {
+    notFoundPage() {
+      this.$router.push({
+        name: "NotFound",
+        params: { pathMatch: "not-found" },
+      });
+    },
   },
 };
 </script>
