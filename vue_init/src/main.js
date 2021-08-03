@@ -15,7 +15,7 @@ const routes = [
   { path: "/home", component: Home },
   { path: "/blog", component: Blog },
   { path: "/formulario", component: Formulario },
-  { path: "/pagina1", component: Pagina1 },
+  { path: "/pagina1/:nombre?/:apellido?", name: "pagina1", component: Pagina1 },
   { path: "/pagina2", component: Pagina2 },
 ];
 
