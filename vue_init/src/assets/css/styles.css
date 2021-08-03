@@ -35,6 +35,16 @@ body {
   margin-top: 35px;
 }
 
+#logo a {
+  text-decoration: none;
+  color: #444;
+  transition: 300ms all;
+}
+
+#logo a:hover {
+  color: #2a9201;
+}
+
 #logo img {
   display: block;
   float: left;
@@ -87,6 +97,10 @@ body {
 
 #menu a:hover {
   color: #4dbd21;
+}
+
+.active {
+  color: #4dbd21 !important;
 }
 
 #slider {

@@ -1,6 +1,9 @@
 //Route Components
 import Home from "./components/Home.vue";
-import HelloWorld from "./components/HelloWorld.vue";
+import Blog from "./components/Blog.vue";
+import Formulario from "./components/Formulario.vue";
+import Pagina1 from "./components/Pagina1.vue";
+import Pagina2 from "./components/Pagina2.vue";
 
 //Paquetes
 import { createApp } from "vue";
@@ -10,7 +13,10 @@ import App from "./App.vue";
 const routes = [
   { path: "/", component: Home },
   { path: "/home", component: Home },
-  { path: "/hello", component: HelloWorld },
+  { path: "/blog", component: Blog },
+  { path: "/formulario", component: Formulario },
+  { path: "/pagina1", component: Pagina1 },
+  { path: "/pagina2", component: Pagina2 },
 ];
 
 const router = createRouter({
