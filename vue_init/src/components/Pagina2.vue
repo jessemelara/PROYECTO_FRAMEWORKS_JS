@@ -1,30 +1,19 @@
 <template>
   <h1 class="subheader">Animes</h1>
-  <div id="articles">
-    <article
-      class="article-item"
-      id="article-template"
-      v-for="anime in animes"
-      v-bind:key="anime.title"
-    >
-      <div class="image-wrap">
-        <img :src="anime.image" :alt="anime.title" />
-      </div>
-      <h2>{{ anime.title }}</h2>
-      <span class="date">
-        Hace 5 minutos
-      </span>
-      <a href="article.html">Leer más</a>
-
-      <div class="clearfix"></div>
-    </article>
+  <div id="articles" v-for="anime in animes" v-bind:key="anime.title">
+    <Anime :anime="anime" />
   </div>
 </template>
 
 ;
 <script>
+import Anime from "./Anime.vue";
+
 export default {
   name: "Pagina2",
+  components: {
+    Anime,
+  },
   data() {
     return {
       animes: [
