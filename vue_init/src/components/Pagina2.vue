@@ -1,18 +1,29 @@
 <template>
-  <h1 class="subheader">Animes</h1>
-  <div id="articles" v-for="anime in animes" v-bind:key="anime.title">
-    <Anime :anime="anime" />
+  <Slider title="Sección de Animes" size="slider-small" />
+  <div class="center">
+    <section id="content">
+      <h2 class="subheader">Página 2: Animes</h2>
+      <div id="articles" v-for="anime in animes" v-bind:key="anime.title">
+        <Anime :anime="anime" />
+      </div>
+    </section>
+    <Sidebar />
+    <div class="clearfix"></div>
   </div>
 </template>
 
 ;
 <script>
 import Anime from "./Anime.vue";
+import Slider from "./Slider.vue";
+import Sidebar from "./Sidebar.vue";
 
 export default {
   name: "Pagina2",
   components: {
     Anime,
+    Slider,
+    Sidebar,
   },
   data() {
     return {
