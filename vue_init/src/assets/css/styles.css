@@ -244,9 +244,18 @@ body {
 }
 
 .btn-primary {
-  background: #1e6f5c;
+  background: #0b7242;
   text-decoration: none;
   margin: 10px;
+}
+
+.btn-star {
+  background: #00500d;
+  text-decoration: none;
+  margin: 8px;
+  padding: 6px;
+  max-width: 200px;
+  font-size: 14px;
 }
 
 .btn-accept {
@@ -256,13 +265,14 @@ body {
 }
 
 .btn-secondary {
-  background: #940168;
+  background: #a80032;
   text-decoration: none;
   margin: 10px;
 }
 
 .btn-danger:hover,
 .btn-warning:hover,
+.btn-star:hover,
 .btn-primary:hover,
 .btn-secondary:hover,
 .btn-accept:hover {

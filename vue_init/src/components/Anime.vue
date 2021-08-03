@@ -8,6 +8,12 @@
       Hace 5 minutos
     </span>
     <a href="article.html">Leer más</a>
+    <input
+      type="button"
+      value="Marcar como favorito"
+      class="btn btn-star"
+      @click="markAsFavorite(anime)"
+    />
 
     <div class="clearfix"></div>
   </article>
@@ -17,5 +23,10 @@
 export default {
   name: "Anime",
   props: ["anime"],
+  methods: {
+    markAsFavorite(anime) {
+      this.$emit("favorite", anime);
+    },
+  },
 };
 </script>
