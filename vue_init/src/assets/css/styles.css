@@ -306,6 +306,13 @@ p {
   margin-bottom: 15px;
 }
 
+.text-danger p {
+  color: #da0037;
+  margin: 2px;
+  padding: 1px;
+  font-size: medium !important;
+}
+
 input[type="text"],
 textarea {
   width: 100%;
