@@ -4,12 +4,12 @@
     <section id="content">
       <h2 class="subheader">Página 2: Animes</h2>
       <div v-if="favorite">
-        <p style="background: #0b7242; color: white; padding: 10px;">
+        <p class="sld-check-g">
           <strong>Tu anime favorito es: </strong> <em>{{ favorite.title }}</em>
         </p>
       </div>
       <div v-else>
-        <p style="background: #a80032; color: white; padding: 10px;">
+        <p class="sld-check-r">
           <strong>No has seleccionado ningún anime como favorito</strong>
         </p>
       </div>
@@ -22,7 +22,6 @@
   </div>
 </template>
 
-;
 <script>
 import Anime from "./Anime.vue";
 import Slider from "./Slider.vue";

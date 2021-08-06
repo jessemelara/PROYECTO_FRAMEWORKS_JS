@@ -4,17 +4,17 @@
     <section id="content">
       <h2 class="subheader">Página 1: Párametros en la URL</h2>
       <div v-if="!nombre && !apellido">
-        <p style="font-size: 20px;">
-          No se encuentran páramatros para mostrar
+        <p>
+          No se encuentran párametros para mostrar
         </p>
 
-        <input type="text" v-model="nombres" />
-        <p v-if="nombres" style="font-size: 20px;">
+        <input type="text" v-model="nombres" style="width: 80%;" />
+        <p v-if="nombres">
           Su nombre es: <em>{{ nombres }}</em>
         </p>
       </div>
 
-      <p v-if="nombre || apellido" style="font-size: 20px;">
+      <p v-if="nombre || apellido">
         Su nombre es: <em>{{ nombre }} {{ apellido }}</em>
       </p>
 

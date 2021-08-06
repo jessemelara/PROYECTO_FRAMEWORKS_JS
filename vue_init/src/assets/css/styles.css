@@ -19,7 +19,7 @@ body {
 }
 
 .center {
-  width: 75%;
+  width: 85%;
   margin: 0px auto;
 }
 
@@ -194,6 +194,26 @@ body {
   margin-top: 10px;
 }
 
+.sld-check-r {
+  background: #a80032;
+  color: white;
+  padding: 10px;
+  max-width: 100%;
+  font-size: 16px;
+}
+
+.sld-check-g {
+  background: #0b7242;
+  color: white;
+  padding: 10px;
+  max-width: 100%;
+  font-size: 16px;
+}
+
+p {
+  font-size: 18px;
+}
+
 .btn {
   display: block;
   background: black;
@@ -343,6 +363,7 @@ textarea {
 
 .article-item .image-wrap img {
   height: 100%;
+  width: 110%;
   text-align: center;
 }
 
@@ -457,7 +478,7 @@ textarea {
 
   #content {
     float: none;
-    width: 100%;
+    width: 85%;
   }
 
   #sidebar {
@@ -488,17 +509,13 @@ textarea {
     font-size: 30px;
   }
 
-  .article-item {
-    width: 95%;
-  }
-
   .article-item .image-wrap {
     width: 120px;
     height: 120px;
   }
 
   .article-item h2 {
-    font-size: 23px;
+    font-size: 21px;
   }
 }
 
@@ -542,7 +559,6 @@ textarea {
   }
 
   .article-item {
-    width: 85%;
     padding-bottom: 20px;
     padding-top: 20px;
   }
@@ -553,11 +569,15 @@ textarea {
   }
 
   .article-item h2 {
-    font-size: 20px;
+    font-size: 17px;
+  }
+
+  .article-item .date {
+    font-size: 11px;
   }
 
   .article-item a {
-    margin-top: 8px;
+    margin-top: 12px;
   }
 
   #slider.slider-small {
@@ -606,7 +626,7 @@ textarea {
   }
 
   .subheader {
-    font-size: 22px;
+    font-size: 15px;
   }
 
   .article-item .image-wrap {
@@ -615,16 +635,16 @@ textarea {
   }
 
   .article-item h2 {
-    font-size: 16px;
+    font-size: 12px;
   }
 
   .article-item .date {
-    font-size: 12px;
+    font-size: 10px;
   }
 
   .article-item a {
     margin-top: 5px;
-    font-size: 12px;
+    font-size: 10px;
   }
 
   #slider.slider-small {
@@ -644,10 +664,32 @@ textarea {
     font-size: 16px;
   }
 
+  p {
+    font-size: 12px;
+  }
+
   .btn {
     font-size: 12px;
     padding: 7px;
     max-width: 80px;
+  }
+
+  .btn-star {
+    padding: 6px;
+    max-width: 150px;
+    font-size: 7px;
+  }
+
+  .sld-check-r {
+    padding: 6px;
+    max-width: 95%;
+    font-size: 11px;
+  }
+
+  .sld-check-g {
+    padding: 6px;
+    max-width: 95%;
+    font-size: 11px;
   }
 
   input[type="text"],
