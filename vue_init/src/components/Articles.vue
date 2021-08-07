@@ -40,7 +40,9 @@
               .slice(1)
         }}
       </span>
-      <a href="article.html">Leer más</a>
+      <router-link :to="{ name: 'article', params: { id: article._id } }"
+        >Leer más</router-link
+      >
 
       <div class="clearfix"></div>
     </article>
@@ -58,22 +60,20 @@ export default {
     return {
       url: Global.url,
       isLoading: false,
-      fullPage: false,
       moment: moment,
     };
   },
   mounted() {
     let loader = this.$loading.show({
       // Optional parameters
-      container: this.fullPage ? null : this.$refs.divContainer,
-      fullpage: false,
+      container: this.$refs.divContainer,
       canCancel: true,
       onCancel: this.onCancel,
     });
     // simulate AJAX
     setTimeout(() => {
       loader.hide();
-    }, 2000);
+    }, 900);
   },
   methods: {
     onCancel() {

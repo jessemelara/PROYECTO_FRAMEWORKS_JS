@@ -301,9 +301,10 @@ p {
   text-decoration: underline;
 }
 
-.buttons {
+.buttons button {
   margin-top: 15px;
   margin-bottom: 15px;
+  min-width: 110px;
 }
 
 .text-danger p {
@@ -415,7 +416,7 @@ textarea {
 
 .article-detail .image-wrap img {
   width: 100%;
-  height: auto;
+  height: 125%;
 }
 
 .article-detail .subheader {
