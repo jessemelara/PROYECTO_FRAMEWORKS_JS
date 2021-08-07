@@ -43,6 +43,8 @@
 </template>
 <script>
 import Sidebar from "./Sidebar.vue";
+import Article from "../models/Article";
+
 import { useValidation, ValidationError } from "vue3-form-validation";
 export const required = (msg) => (x) => !x && msg;
 const newLocal = /^[a-zA-ZÀ-ÿ\u00f1\u00d1]+(\u0020*[a-zA-ZÀ-ÿ\u00f1\u00d1]*)*[a-zA-ZÀ-ÿ\u00f1\u00d1]+$/g;
@@ -55,10 +57,7 @@ export default {
   },
   data() {
     return {
-      article: {
-        title: "",
-        content: "",
-      },
+      article: new Article("", "", ""),
     };
   },
   setup() {
