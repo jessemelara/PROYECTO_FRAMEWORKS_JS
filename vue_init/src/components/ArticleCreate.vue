@@ -32,6 +32,12 @@
             </div>
           </div>
 
+          <div class="form-group">
+            <label :for="form.article.image.$uid">Imagen</label>
+            <input type="file" name="image" />
+          </div>
+          <br />
+
           <div class="clearfix"></div>
           <input type="submit" value="Enviar" class="btn btn-success" />
         </form>
@@ -80,10 +86,13 @@ export default {
           $value: "",
           $rules: [required("Este campo es requerido.")],
         },
+        image: {
+          $value: "",
+        },
       },
     });
 
-    const saveArticle = async () => {
+    async function saveArticle() {
       try {
         const formData = await validateFields();
         console.log(formData);
@@ -92,7 +101,7 @@ export default {
           console.log(e.message);
         }
       }
-    };
+    }
 
     return {
       form,
