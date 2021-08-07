@@ -10,8 +10,10 @@
   "dependencies": {
     "axios": "^0.21.1",
     "core-js": "^3.6.5",
+    "moment": "^2.29.1",
     "vue": "^3.0.0",
     "vue-loading-overlay": "4.0",
+    "vue-moment": "^4.1.0",
     "vue-router": "^4.0.10",
     "vue3-form-validation": "^4.0.4"
   },
