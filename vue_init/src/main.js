@@ -8,6 +8,7 @@ import NotFound from "./components/NotFound.vue";
 import Search from "./components/Search.vue";
 import Redirect from "./components/Redirect.vue";
 import Article from "./components/Article.vue";
+import ArticleCreate from "./components/ArticleCreate.vue";
 
 //Paquetes
 import { createApp } from "vue";
@@ -26,6 +27,11 @@ const routes = [
   { path: "/redirect/:txtSearch", component: Redirect },
   { path: "/blog/search/:txtSearch", component: Search },
   { path: "/blog/article/:id", name: "article", component: Article },
+  {
+    path: "/blog/create-article",
+    name: "ArticleCreate",
+    component: ArticleCreate,
+  },
   { path: "/formulario", component: Formulario },
   { path: "/pagina1/:nombre?/:apellido?", name: "pagina1", component: Pagina1 },
   { path: "/pagina2", component: Pagina2 },
