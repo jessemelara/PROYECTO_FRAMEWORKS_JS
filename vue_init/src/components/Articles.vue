@@ -31,7 +31,14 @@
       </div>
       <h2>{{ article.title }}</h2>
       <span class="date">
-        Hace 5 minutos
+        {{
+          moment(article.date)
+            .fromNow()[0]
+            .toUpperCase() +
+            moment(article.date)
+              .fromNow()
+              .slice(1)
+        }}
       </span>
       <a href="article.html">Leer más</a>
 
@@ -42,6 +49,7 @@
 
 <script>
 import Global from "../Global";
+import moment from "moment";
 
 export default {
   name: "Articles",
@@ -51,6 +59,7 @@ export default {
       url: Global.url,
       isLoading: false,
       fullPage: false,
+      moment: moment,
     };
   },
   mounted() {
@@ -64,7 +73,7 @@ export default {
     // simulate AJAX
     setTimeout(() => {
       loader.hide();
-    }, 4000);
+    }, 2000);
   },
   methods: {
     onCancel() {

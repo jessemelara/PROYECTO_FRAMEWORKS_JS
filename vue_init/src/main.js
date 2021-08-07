@@ -11,6 +11,9 @@ import { createApp } from "vue";
 import { createRouter, createWebHistory } from "vue-router";
 import VueLoading from "vue-loading-overlay";
 import "vue-loading-overlay/dist/vue-loading.css";
+import VueMoment from "vue-moment";
+import moment from "moment";
+import "moment/locale/es";
 import App from "./App.vue";
 
 const routes = [
@@ -33,3 +36,6 @@ const app = createApp(App);
 app.use(router);
 app.mount("#app");
 app.use(VueLoading);
+app.use(VueMoment, {
+  moment,
+});
