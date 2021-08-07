@@ -5,6 +5,7 @@ import Formulario from "./components/Formulario.vue";
 import Pagina1 from "./components/Pagina1.vue";
 import Pagina2 from "./components/Pagina2.vue";
 import NotFound from "./components/NotFound.vue";
+import Search from "./components/Search.vue";
 
 //Paquetes
 import { createApp } from "vue";
@@ -20,6 +21,7 @@ const routes = [
   { path: "/", component: Home },
   { path: "/home", component: Home },
   { path: "/blog", component: Blog },
+  { path: "/blog/search/:txtSearch", component: Search },
   { path: "/formulario", component: Formulario },
   { path: "/pagina1/:nombre?/:apellido?", name: "pagina1", component: Pagina1 },
   { path: "/pagina2", component: Pagina2 },
