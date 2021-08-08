@@ -34,7 +34,13 @@
 
           <div class="form-group">
             <label for="image">Imagen</label>
-            <input type="file" name="image" />
+            <input
+              type="file"
+              id="file"
+              name="file0"
+              ref="file"
+              @change="fileChange"
+            />
           </div>
           <br />
 
@@ -52,6 +58,7 @@ import Sidebar from "./Sidebar.vue";
 import Global from "../Global";
 import axios from "axios";
 import { useRouter } from "vue-router";
+import { ref } from "vue";
 import { useValidation, ValidationError } from "vue3-form-validation";
 export const required = (msg) => (x) => !x && msg;
 const newLocal = /^[a-zA-ZÀ-ÿ\u00f1\u00d1]+(\u0020*[a-zA-ZÀ-ÿ\u00f1\u00d1]*)*[a-zA-ZÀ-ÿ\u00f1\u00d1]+$/;
@@ -64,6 +71,8 @@ export default {
   },
   setup() {
     const url = Global.url;
+    const file = ref(null);
+    let image = null;
     const router = useRouter();
     const {
       form,
@@ -87,6 +96,17 @@ export default {
       },
     });
 
+    async function fileChange() {
+      try {
+        image = file.value.files[0];
+        console.log(image);
+      } catch (e) {
+        if (e instanceof ValidationError) {
+          console.log(e.message);
+        }
+      }
+    }
+
     async function saveArticle() {
       try {
         const formData = await validateFields();
@@ -98,7 +118,36 @@ export default {
           .then((res) => {
             console.log(res.data);
             if (res.data.status == "success") {
-              router.push("/blog");
+              if (image != null && image != undefined && image != "") {
+                //Subida de imagen
+                const imageData = new FormData();
+                imageData.append("file0", image, image.name);
+                let articleId = res.data.article._id;
+
+                //Peticion AJAX
+                axios
+                  .post(`${url}upload-image/${articleId}`, imageData)
+                  .then((res) => {
+                    if (res.data.article) {
+                      formData.article = res.data.article;
+                      router.push("/blog");
+                    } else {
+                      //Alertas
+                    }
+                  })
+                  .catch(function(error) {
+                    if (error.response) {
+                      console.log(error.response.data);
+                      console.log(error.response.status);
+                    } else {
+                      console.log("Error", error.message);
+                    }
+                    console.log(error.config);
+                  });
+              } else {
+                formData.article = res.data.article;
+                router.push("/blog");
+              }
             }
           })
           .catch(function(error) {
@@ -121,7 +170,10 @@ export default {
       form,
       errors,
       submitting,
+      file,
+      image,
       resetFields,
+      fileChange,
       saveArticle,
     };
   },
