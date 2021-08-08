@@ -33,7 +33,7 @@
           </div>
 
           <div class="form-group">
-            <label :for="form.article.image.$uid">Imagen</label>
+            <label for="image">Imagen</label>
             <input type="file" name="image" />
           </div>
           <br />
@@ -49,11 +49,12 @@
 </template>
 <script>
 import Sidebar from "./Sidebar.vue";
-import Article from "../models/Article";
-
+import Global from "../Global";
+import axios from "axios";
+import { useRouter } from "vue-router";
 import { useValidation, ValidationError } from "vue3-form-validation";
 export const required = (msg) => (x) => !x && msg;
-const newLocal = /^[a-zA-ZÀ-ÿ\u00f1\u00d1]+(\u0020*[a-zA-ZÀ-ÿ\u00f1\u00d1]*)*[a-zA-ZÀ-ÿ\u00f1\u00d1]+$/g;
+const newLocal = /^[a-zA-ZÀ-ÿ\u00f1\u00d1]+(\u0020*[a-zA-ZÀ-ÿ\u00f1\u00d1]*)*[a-zA-ZÀ-ÿ\u00f1\u00d1]+$/;
 export const regex = (msg) => (x) => newLocal.test(x) || msg;
 
 export default {
@@ -61,12 +62,9 @@ export default {
   components: {
     Sidebar,
   },
-  data() {
-    return {
-      article: new Article("", "", ""),
-    };
-  },
   setup() {
+    const url = Global.url;
+    const router = useRouter();
     const {
       form,
       errors,
@@ -86,9 +84,6 @@ export default {
           $value: "",
           $rules: [required("Este campo es requerido.")],
         },
-        image: {
-          $value: "",
-        },
       },
     });
 
@@ -96,6 +91,25 @@ export default {
       try {
         const formData = await validateFields();
         console.log(formData);
+
+        //Guardar datos en el backend
+        axios
+          .post(`${url}save`, formData.article)
+          .then((res) => {
+            console.log(res.data);
+            if (res.data.status == "success") {
+              router.push("/blog");
+            }
+          })
+          .catch(function(error) {
+            if (error.response) {
+              console.log(error.response.data);
+              console.log(error.response.status);
+            } else {
+              console.log("Error", error.message);
+            }
+            console.log(error.config);
+          }); //End --Articulos guardados--
       } catch (e) {
         if (e instanceof ValidationError) {
           console.log(e.message);
