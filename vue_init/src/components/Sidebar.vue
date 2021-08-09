@@ -2,7 +2,7 @@
   <aside id="sidebar">
     <div id="nav-blog" class="sidebar-item">
       <h3>Puedes hacer esto</h3>
-      <router-link to="/blog/create-article" class="btn btn-success"
+      <router-link to="/blog/article-create" class="btn btn-success"
         >Crear artículo</router-link
       >
     </div>

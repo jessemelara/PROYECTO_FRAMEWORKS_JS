@@ -9,6 +9,7 @@ import Search from "./components/Search.vue";
 import Redirect from "./components/Redirect.vue";
 import Article from "./components/Article.vue";
 import ArticleCreate from "./components/ArticleCreate.vue";
+import ArticleEdit from "./components/ArticleEdit.vue";
 
 //Paquetes
 import { createApp } from "vue";
@@ -28,9 +29,15 @@ const routes = [
   { path: "/blog/search/:txtSearch", component: Search },
   { path: "/blog/article/:id", name: "article", component: Article },
   {
-    path: "/blog/create-article",
+    path: "/blog/article-create",
     name: "ArticleCreate",
     component: ArticleCreate,
+  },
+  {
+    path: "/blog/article-edit/:id/:imageName?",
+    name: "ArticleEdit",
+    component: ArticleEdit,
+    props: true,
   },
   { path: "/formulario", component: Formulario },
   { path: "/pagina1/:nombre?/:apellido?", name: "pagina1", component: Pagina1 },

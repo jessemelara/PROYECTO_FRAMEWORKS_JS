@@ -1,7 +1,7 @@
 <template>
   <div class="center">
     <section id="content">
-      <div id="articles">
+      <div id="articles" ref="divContainer">
         <article class="article-item article-detail" v-if="article">
           <h1 class="subheader">{{ article.title }}</h1>
           <span class="date">
@@ -57,7 +57,22 @@
             laudantium iste iure, consequuntur cum?
           </p>
           <div className="buttons">
-            <button class="btn btn-warning">
+            <button
+              class="btn btn-warning"
+              @click="
+                if (article.image) {
+                  this.$router.push({
+                    name: 'ArticleEdit',
+                    params: { id: article._id, imageName: article.image },
+                  });
+                } else {
+                  this.$router.push({
+                    name: 'ArticleEdit',
+                    params: { id: article._id },
+                  });
+                }
+              "
+            >
               Editar
             </button>
             <button class="btn btn-danger">
@@ -93,6 +108,7 @@ export default {
     return {
       url: Global.url,
       article: null,
+      isLoading: false,
       moment: moment,
       useRouter,
     };
@@ -100,6 +116,17 @@ export default {
   mounted() {
     let articleId = this.$route.params.id;
     this.oneArticle(articleId);
+
+    let loader = this.$loading.show({
+      // Optional parameters
+      container: this.$refs.divContainer,
+      canCancel: true,
+      onCancel: this.onCancel,
+    });
+    // simulate AJAX
+    setTimeout(() => {
+      loader.hide();
+    }, 900);
   },
   methods: {
     oneArticle(articleId) {
@@ -123,6 +150,9 @@ export default {
           }
           console.log(error.config);
         });
+    },
+    onCancel() {
+      console.log("El usuario interrumpió la carga.");
     },
   },
 };

@@ -36,11 +36,25 @@
             <label for="image">Imagen</label>
             <input
               type="file"
-              id="file"
-              name="file0"
+              id="image"
+              name="image"
               ref="file"
               @change="fileChange"
             />
+            <div class="image-wrap">
+              <img
+                :src="url + 'get-image/' + imageName"
+                :alt="form.article.title.$value"
+                style="width:250px; height:115px; margin:5px;"
+                v-if="imageName"
+              />
+              <img
+                src="../assets/images/default-image.svg"
+                :alt="form.article.title.$value"
+                style="width:250px; height:115px; margin:5px;"
+                v-else
+              />
+            </div>
           </div>
           <br />
 
@@ -58,8 +72,8 @@ import Sidebar from "./Sidebar.vue";
 import Global from "../Global";
 import axios from "axios";
 import Swal from "sweetalert2";
-import { useRouter } from "vue-router";
-import { ref } from "vue";
+import { useRoute, useRouter } from "vue-router";
+import { onMounted, ref } from "vue";
 import { useValidation, ValidationError } from "vue3-form-validation";
 export const required = (msg) => (x) => !x && msg;
 const newLocal = /^[a-zA-ZÀ-ÿ\u00f1\u00d1]+(\u0020*[a-zA-ZÀ-ÿ\u00f1\u00d1]*)*[a-zA-ZÀ-ÿ\u00f1\u00d1]+$/;
@@ -70,10 +84,16 @@ export default {
   components: {
     Sidebar,
   },
-  setup() {
+  props: {
+    id: String,
+    imageName: String,
+  },
+  setup(props) {
     const url = Global.url;
     const file = ref(null);
+    let article = null;
     let image = null;
+    const route = useRoute();
     const router = useRouter();
     const {
       form,
@@ -97,6 +117,38 @@ export default {
       },
     });
 
+    onMounted(() => {
+      let articleId = route.params.id;
+      getArticle(articleId);
+    });
+
+    async function getArticle(articleId) {
+      try {
+        axios
+          .get(`${url}article/${articleId}`)
+          .then((res) => {
+            if (res.data.status == "success") {
+              article = res.data.article;
+              form.article.title.$value = article.title;
+              form.article.content.$value = article.content;
+            }
+            console.log(res.data);
+          })
+          .catch(function(error) {
+            if (error.response) {
+              console.log(error.response.data);
+            } else {
+              console.log("Error", error.message);
+            }
+            console.log(error.config);
+          });
+      } catch (e) {
+        if (e instanceof ValidationError) {
+          console.log(e.message);
+        }
+      }
+    }
+
     async function fileChange() {
       try {
         image = file.value.files[0];
@@ -114,7 +166,7 @@ export default {
         console.log(formData);
 
         Swal.fire({
-          title: "¿Quieres guardar los cambios realizados?",
+          title: "¿Quieres guardar este nuevo artículo?",
           showDenyButton: true,
           showCancelButton: true,
           confirmButtonText: `Guardar`,
@@ -125,7 +177,7 @@ export default {
           if (result.isConfirmed) {
             //Guardar datos en el Backend
             axios
-              .post(`${url}save`, formData.article)
+              .put(`${url}article/${props.id}`, formData.article)
               .then((res) => {
                 console.log(res.data);
                 if (res.data.status == "success") {
@@ -141,7 +193,10 @@ export default {
                       .then((res) => {
                         if (res.data.article) {
                           formData.article = res.data.article;
-                          router.push("/blog");
+                          router.push({
+                            name: "article",
+                            params: { id: article._id },
+                          });
                         }
                       })
                       .catch(function(error) {
@@ -155,7 +210,10 @@ export default {
                       });
                   } else {
                     formData.article = res.data.article;
-                    router.push("/blog");
+                    router.push({
+                      name: "article",
+                      params: { id: article._id },
+                    });
                   }
                 }
               })
@@ -175,7 +233,17 @@ export default {
               "success"
             );
           } else if (result.isDenied) {
-            router.push("/blog/create-article");
+            if (props.imageName) {
+              router.push({
+                name: "ArticleEdit",
+                params: { id: article._id, imageName: article.image },
+              });
+            } else {
+              router.push({
+                name: "ArticleEdit",
+                params: { id: article._id },
+              });
+            }
             Swal.fire("!Los cambios no se han guardado!", "", "info");
           }
         });
@@ -190,9 +258,12 @@ export default {
       form,
       errors,
       submitting,
+      url,
+      article,
       file,
       image,
       resetFields,
+      getArticle,
       fileChange,
       saveArticle,
     };
