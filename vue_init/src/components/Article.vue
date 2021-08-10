@@ -75,7 +75,7 @@
             >
               Editar
             </button>
-            <button class="btn btn-danger">
+            <button class="btn btn-danger" @click="deleteArticle(article._id)">
               Eliminar
             </button>
           </div>
@@ -96,8 +96,8 @@
 import Sidebar from "./Sidebar.vue";
 import Global from "../Global";
 import axios from "axios";
+import Swal from "sweetalert2";
 import moment from "moment";
-import { useRouter } from "vue-router";
 
 export default {
   name: "Article",
@@ -110,7 +110,6 @@ export default {
       article: null,
       isLoading: false,
       moment: moment,
-      useRouter,
     };
   },
   mounted() {
@@ -141,15 +140,46 @@ export default {
         .catch(function(error) {
           if (error.response) {
             console.log(error.response.data);
-            console.log(error.response.status);
-            console.log(error.response.headers);
-          } else if (error.request) {
-            console.log(error.request);
           } else {
             console.log("Error", error.message);
           }
           console.log(error.config);
         });
+    },
+    deleteArticle(articleId) {
+      Swal.fire({
+        title: "¿Quieres eliminar este artículo?",
+        text: "¡No podrás revertir esta acción!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#4C8F62",
+        cancelButtonColor: "#B33030",
+        confirmButtonText: "Sí, ¡elimínalo!",
+        cancelButtonText: "Cancelar",
+      }).then((result) => {
+        if (result.isConfirmed) {
+          axios
+            .delete(`${this.url}article/${articleId}`)
+            .then((res) => {
+              console.log(res.data);
+              this.$router.push("/blog");
+            })
+            .catch(function(error) {
+              if (error.response) {
+                console.log(error.response.data);
+                this.$router.push(`/blog/article/${articleId}`);
+              } else {
+                console.log("Error", error.message);
+              }
+              console.log(error.config);
+            });
+          Swal.fire(
+            "¡Eliminado!",
+            "El artículo fue eliminado exitosamente.",
+            "success"
+          );
+        }
+      });
     },
     onCancel() {
       console.log("El usuario interrumpió la carga.");
