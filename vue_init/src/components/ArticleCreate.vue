@@ -39,8 +39,22 @@
               id="file"
               name="file0"
               ref="file"
-              @change="fileChange"
+              @change="onFileChange"
             />
+            <div class="image-wrap">
+              <img
+                :src="pathImage"
+                :alt="pathImage"
+                style="width:250px; height:115px; margin:5px;"
+                v-if="pathImage"
+              />
+              <img
+                src="../assets/images/default-image.svg"
+                :alt="form.article.title.$value"
+                style="width:250px; height:115px; margin:5px;"
+                v-else
+              />
+            </div>
           </div>
           <br />
 
@@ -69,6 +83,19 @@ export default {
   name: "ArticleCreate",
   components: {
     Sidebar,
+  },
+  data() {
+    return {
+      pathImage: null,
+    };
+  },
+  methods: {
+    onFileChange(e) {
+      const fileRoot = e.target.files[0];
+      this.pathImage = URL.createObjectURL(fileRoot);
+      console.log(this.pathImage);
+      this.fileChange();
+    },
   },
   setup() {
     const url = Global.url;
@@ -100,7 +127,6 @@ export default {
     async function fileChange() {
       try {
         image = file.value.files[0];
-        console.log(image);
       } catch (e) {
         if (e instanceof ValidationError) {
           console.log(e.message);
